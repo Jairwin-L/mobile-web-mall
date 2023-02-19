@@ -1,12 +1,10 @@
 // use less: https://github.com/SolidZORO/next-plugin-antd-less
-import withAntdLess from 'next-plugin-antd-less';
+const withAntdLess = require('next-plugin-antd-less');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    transpilePackages: ['antd-mobile'],
-  },
+  transpilePackages: ['antd-mobile'],
   ...withAntdLess({
     modifyVars: {
       '@primary-color': '#2598ff',
