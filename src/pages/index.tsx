@@ -1,13 +1,11 @@
-import { Button } from 'antd-mobile';
-require('./index.less');
+import { Divider } from 'antd-mobile';
+import style from './index.module.less';
 
 export default function Main() {
   return (
-    <div className="main">
-      antd-mobile
-      <Button color="primary" size="middle">
-        Button
-      </Button>
-    </div>
+    <>
+      <Divider>Divider</Divider>
+      <div className={style['main-title']}>main</div>
+    </>
   );
 }
