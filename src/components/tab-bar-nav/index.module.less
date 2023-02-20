@@ -1,0 +1,29 @@
+.tab-bar-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 320px;
+  max-width: 640px;
+  height: 54px;
+  margin: 0 auto;
+  background: @white;
+  box-shadow: 0 3px 30px rgba(129, 133, 167, 0.1);
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+    li {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: inherit;
+      .tab_bar_icon {
+        font-size: 20px;
+      }
+    }
+  }
+}

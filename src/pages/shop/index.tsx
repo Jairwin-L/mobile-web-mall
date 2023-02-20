@@ -1,3 +1,10 @@
+import { TabBarNav } from '@/components';
+
 export default function Shop() {
-  return <>Shop</>;
+  return (
+    <>
+      Shop
+      <TabBarNav />
+    </>
+  );
 }
