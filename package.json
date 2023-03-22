@@ -33,5 +33,17 @@
       "pre-commit": "f2elint commit-file-scan",
       "commit-msg": "f2elint commit-msg-scan"
     }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "yarn": {
+    "mode": "pnpm"
+  },
+  "npm": {
+    "mode": "pnpm"
+  },
+  "cnpm": {
+    "mode": "pnpm"
   }
 }
