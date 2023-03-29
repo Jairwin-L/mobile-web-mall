@@ -1,4 +1,4 @@
-import { ApiUrl } from '@/constants/api';
+import { ApiUrl } from '@/constants';
 
 const env = process.env.NEXT_PUBLIC_API_ENV;
 let apiUrl = ApiUrl.PROD;

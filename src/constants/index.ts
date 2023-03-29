@@ -1,1 +1,2 @@
-export const APP_NAME = 'nextjs';
+export { ApiUrl } from './api';
+export { TAB_BARS } from './router';

@@ -1,6 +1,16 @@
 import type { AppProps } from 'next/app';
+import { CustomTabBar } from '@/components';
 import style from './global.less';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component style={style} {...pageProps} />;
+type IAppProps = AppProps & {
+  router: any;
+};
+
+export default function App(props: IAppProps) {
+  const { Component, pageProps } = props || {};
+  return (
+    <CustomTabBar>
+      <Component style={style} {...pageProps} />
+    </CustomTabBar>
+  );
 }

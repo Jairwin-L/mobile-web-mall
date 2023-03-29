@@ -1,18 +1,5 @@
 import { query } from '@/api/modules/biz';
-import { TabBarNav } from '@/components';
 import { Button } from 'antd-mobile';
-
-export default function Main(props: { model: IBaseResp<IQueryBiz.Resp> }) {
-  const { model } = props;
-  console.log(`data----->：`, model);
-  return (
-    <>
-      <Button color="primary">按钮</Button>
-      Main
-      <TabBarNav />
-    </>
-  );
-}
 
 export async function getServerSideProps() {
   const resp = await query({
@@ -24,4 +11,23 @@ export async function getServerSideProps() {
       model: resp,
     },
   };
+}
+
+export default function Main(props: { model: IBaseResp<IQueryBiz.Resp> }) {
+  const { model } = props;
+  console.log(`model----->：`, model);
+  return (
+    <>
+      <Button color="primary">按钮</Button>
+      Main
+      <ul>
+        {Array(50)
+          .fill(1)
+          .map((item, index) => {
+            return <li key={index}>{item}</li>;
+          })}
+      </ul>
+      <p>底部</p>
+    </>
+  );
 }
