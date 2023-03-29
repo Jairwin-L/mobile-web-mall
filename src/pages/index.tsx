@@ -13,7 +13,7 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Main(props: { model: IBaseResp<IQueryBiz.Resp> }) {
+export default function Main(props: IServerSideProps<IQueryBiz.Resp>) {
   const { model } = props;
   console.log(`model----->：`, model);
   return (

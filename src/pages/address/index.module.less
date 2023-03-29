@@ -1,0 +1,64 @@
+.address-container {
+  width: 95%;
+  margin: 10px auto;
+  ul {
+    :global(.adm-swipe-action) {
+      margin-bottom: 10px;
+    }
+    li {
+      margin-bottom: 10px;
+      padding: 8px;
+      background: @white;
+      border-radius: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .address-user {
+        display: flex;
+        align-items: center;
+        font-weight: bolder;
+        font-size: 16px;
+        span {
+          margin-left: 5px;
+          color: @primary;
+          font-weight: normal;
+          font-size: 12px;
+        }
+        .address-mark {
+          padding: 2px 8px;
+          color: @white;
+          font-size: 10px;
+          background: @primary;
+          border-radius: 4px;
+        }
+      }
+      .address-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 5px 0 0;
+        span {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+.add_container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  color: @pink;
+  background: @white;
+  .icon-add {
+    margin-right: 5px;
+  }
+}
+.placeholder-class {
+  height: 49px;
+}

@@ -6,7 +6,7 @@ export default function ElePlaceholder({
   placeholderClass,
   children,
 }: {
-  fixType: 'BOTTOM' | 'TOP';
+  fixType?: 'BOTTOM' | 'TOP';
   placeholderClass: string;
   children: ReactNode;
 }) {

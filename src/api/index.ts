@@ -63,8 +63,7 @@ class Request {
     url: string,
     params: NonNullable<Param & { id: number }>,
   ): Promise<IBaseResp<Resp>> {
-    const { id } = params;
-    return this.fetch(`${url}/${id}`, 'delete');
+    return this.fetch(`${url}`, 'delete', params);
   }
   put<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
     return this.fetch(url, 'put', params);
