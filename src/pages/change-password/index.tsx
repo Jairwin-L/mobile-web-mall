@@ -4,7 +4,7 @@ import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
 import { PageLayout } from '@/components';
 import style from './index.module.less';
 
-export default function Login() {
+export default function ChangePassword() {
   const [form] = Form.useForm();
   const [visible, setVisible] = useState(false);
   const onFinish = (values: any) => {
@@ -13,7 +13,7 @@ export default function Login() {
   return (
     <PageLayout
       extraInfo={{
-        navbarTitle: '登录',
+        navbarTitle: '修改密码',
       }}
     >
       <Form mode="card" name="form" layout="horizontal" onFinish={onFinish} form={form}>
@@ -26,10 +26,10 @@ export default function Login() {
           rules={[{ required: true }]}
           extra={
             <div className="eye">
-              {!visible ? (
-                <EyeInvisibleOutline onClick={() => setVisible(true)} />
-              ) : (
+              {visible ? (
                 <EyeOutline onClick={() => setVisible(false)} />
+              ) : (
+                <EyeInvisibleOutline onClick={() => setVisible(true)} />
               )}
             </div>
           }
@@ -38,7 +38,7 @@ export default function Login() {
         </Form.Item>
       </Form>
       <div className={style['submit-btn']}>
-        <Button block color="primary" size="large" onClick={() => form.submit()}>
+        <Button block color="primary" size="middle" onClick={() => form.submit()}>
           提交
         </Button>
       </div>

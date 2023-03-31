@@ -10,8 +10,8 @@ export default function PageLayout(props: IPageLayout) {
   const { reload } = useRouter();
   const [loading, setLoading] = useState(true);
   const { children, initData, extraInfo } = props || {};
-  const { msg = '', success = false, data } = initData || {};
-  const { navbarTitle } = extraInfo || {};
+  const { msg = '', success = false } = initData || {};
+  const { navbarTitle, pageNormalShow = true } = extraInfo || {};
   const { back } = useRouter();
   const TopNavBar = () => {
     return (
@@ -25,15 +25,13 @@ export default function PageLayout(props: IPageLayout) {
     );
   };
   useEffect(() => {
-    if (JSON.stringify(data)) {
-      setLoading(false);
-    }
+    setLoading(false);
   }, []);
   // TODO:好像还有点问题
   if (loading) {
     return <Loading />;
   }
-  if (!loading && !success) {
+  if (!loading && !success && !pageNormalShow) {
     return (
       <>
         <TopNavBar />
