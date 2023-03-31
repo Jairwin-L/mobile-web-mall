@@ -10,6 +10,7 @@ interface IPageLayout {
   };
   extraInfo?: {
     navbarTitle?: string;
+    pageNormalShow?: boolean;
   };
 }
 interface ILoadMore {

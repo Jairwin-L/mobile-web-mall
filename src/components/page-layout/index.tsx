@@ -11,6 +11,7 @@ export default function PageLayout(props: IPageLayout) {
   const [loading, setLoading] = useState(true);
   const { children, initData, extraInfo } = props || {};
   const { msg = '', success = false } = initData || {};
+  // TODO:pageNormalShow待定
   const { navbarTitle, pageNormalShow = true } = extraInfo || {};
   const { back } = useRouter();
   const TopNavBar = () => {
