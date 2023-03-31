@@ -5,9 +5,7 @@ import { useRouter } from 'next/router';
  * @description 获取路由参数
  */
 
-function useQueryString<T extends string>(key: T) {
+export default function useQueryString<T extends string>(key: T) {
   const { query } = useRouter();
   return query[key];
 }
-
-export default useQueryString;

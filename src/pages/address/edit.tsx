@@ -1,24 +1,28 @@
 import { show } from '@/api/modules/address';
+import { PageLayout } from '@/components';
 import { FormConfig } from './form-config';
 
-// TODO: ts
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps(context: IServerSideContext) {
   const resp = await show({
-    id: context.query.id,
+    id: Number(context.query.id),
   });
   return {
     props: {
-      model: resp,
+      initData: resp,
     },
   };
 }
 
 export default function Edit(props: IServerSideProps<IQueryAddress.ListItem>) {
-  const { model } = props;
-  console.log(`model----->：`, model);
+  const { initData } = props;
   return (
-    <>
-      <FormConfig formModel={model.data} />
-    </>
+    <PageLayout
+      initData={initData}
+      extraInfo={{
+        navbarTitle: '修改地址',
+      }}
+    >
+      <FormConfig formModel={initData.data} />
+    </PageLayout>
   );
 }

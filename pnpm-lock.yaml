@@ -17,6 +17,7 @@ specifiers:
   next-plugin-antd-less: ^1.8.0
   react: 18.2.0
   react-dom: 18.2.0
+  swr: ^2.1.1
   typescript: 4.9.5
 
 dependencies:
@@ -33,6 +34,7 @@ dependencies:
   next-plugin-antd-less: registry.npmjs.org/next-plugin-antd-less/1.8.0
   react: registry.npmjs.org/react/18.2.0
   react-dom: registry.npmjs.org/react-dom/18.2.0_react@18.2.0
+  swr: registry.npmjs.org/swr/2.1.1_react@18.2.0
   typescript: registry.npmjs.org/typescript/4.9.5
 
 devDependencies:
@@ -7738,6 +7740,19 @@ packages:
     name: svg-tags
     version: 1.0.0
     dev: true
+
+  registry.npmjs.org/swr/2.1.1_react@18.2.0:
+    resolution: {integrity: sha512-OgwqZmpjOgxNbaez6qzTVqiRWn+Ti5Uzmktk2c01Afqwc50q6z15DeNC8m9G1aY+w2BwEAsKvk59iq6aHlhgyw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/swr/-/swr-2.1.1.tgz}
+    id: registry.npmjs.org/swr/2.1.1
+    name: swr
+    version: 2.1.1
+    engines: {pnpm: '7'}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: registry.npmjs.org/react/18.2.0
+      use-sync-external-store: registry.npmjs.org/use-sync-external-store/1.2.0_react@18.2.0
+    dev: false
 
   registry.npmjs.org/table/6.8.1:
     resolution: {integrity: sha512-Y4X9zqrCftUhMeH2EptSSERdVKt/nEdijTOacGD/97EKjhQ/Qs8RTlEGABSJNNN8lac9kheH+af7yAkEWlgneA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/table/-/table-6.8.1.tgz}

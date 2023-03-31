@@ -1,8 +1,8 @@
 import { createFromIconfontCN } from '@ant-design/icons';
 
-const IconPreFix = '3983875_9dtbvz78e34';
+const IconPreFix = 'font_3983875_u9c3hsb4nid';
 const Icon = createFromIconfontCN({
-  scriptUrl: `//at.alicdn.com/t/c/font_${IconPreFix}.js`,
+  scriptUrl: `//at.alicdn.com/t/c/${IconPreFix}.js`,
 });
 
 interface Props {

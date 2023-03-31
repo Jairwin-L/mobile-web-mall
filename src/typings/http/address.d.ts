@@ -3,7 +3,8 @@ declare namespace IQueryAddress {
   interface ListItem {
     id: number;
     username?: string;
-    mobile?: string;
+    phone?: string;
+    address?: string;
     code?: string[];
   }
   interface QueryParam extends CommonPage {

@@ -8,7 +8,7 @@ const nextConfig = {
   transpilePackages: ['antd-mobile'],
   ...withAntdLess({
     modifyVars: {
-      '@primary': '#2598ff',
+      '@primary': '#1677ff',
       '@detail': '#2db7f5',
       '@edit': '#8354ee',
       '@danger': '#ff3141',

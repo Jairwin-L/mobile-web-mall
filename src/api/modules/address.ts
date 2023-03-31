@@ -5,7 +5,7 @@ import request from '../index';
  * @description 增删改查
  */
 // 列表查询
-export async function query(
+export async function queryList(
   params: IQueryAddress.QueryParam,
 ): Promise<IBaseResp<IQueryAddress.Resp>> {
   try {
