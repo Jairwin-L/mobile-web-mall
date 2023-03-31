@@ -8,14 +8,14 @@ export async function getServerSideProps() {
   });
   return {
     props: {
-      model: resp,
+      initData: resp,
     },
   };
 }
 
 export default function Main(props: IServerSideProps<IQueryBiz.Resp>) {
-  const { model } = props;
-  console.log(`model----->：`, model);
+  const { initData } = props;
+  console.log(`initData----->：`, initData);
   return (
     <>
       <Button color="primary">按钮</Button>

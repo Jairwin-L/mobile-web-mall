@@ -10,7 +10,7 @@ import { useQueryString } from '@/hooks';
 
 const options = genCascadeData();
 
-export function FormConfig(props: IQueryAddress.Model) {
+export default function FormConfig(props: IQueryAddress.Model) {
   const id = useQueryString<QueryStringKey>('id');
   const { back } = useRouter();
   const { formModel } = props;

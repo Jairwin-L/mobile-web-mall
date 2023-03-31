@@ -1,6 +1,7 @@
 import style from './index.module.less';
 
-export default function Loading({ text = '加载中...' }) {
+export default function Loading(props: ILoading) {
+  const { text } = props;
   return (
     <div className={style['loading-container']}>
       <div className={style.loading}>
@@ -9,7 +10,7 @@ export default function Loading({ text = '加载中...' }) {
           <div />
           <div />
         </div>
-        {text ? <span className={style.text}>{text}</span> : null}
+        {text ? <span className={style.text}>{text || '加载中...'}</span> : null}
       </div>
     </div>
   );

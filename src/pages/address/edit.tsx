@@ -1,6 +1,6 @@
 import { show } from '@/api/modules/address';
 import { PageLayout } from '@/components';
-import { FormConfig } from './form-config';
+import FormConfig from './form-config';
 
 export async function getServerSideProps(context: IServerSideContext) {
   const resp = await show({

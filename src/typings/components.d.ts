@@ -18,3 +18,6 @@ interface ILoadMore {
   loadMore?: boolean;
   onLoadMore?: () => void;
 }
+interface ILoading {
+  text?: string;
+}

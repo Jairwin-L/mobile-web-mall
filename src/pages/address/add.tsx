@@ -1,5 +1,5 @@
 import { PageLayout } from '@/components';
-import { FormConfig } from './form-config';
+import FormConfig from './form-config';
 
 export default function Add() {
   return (
