@@ -11,7 +11,11 @@ export default function Mine() {
     push(item.path);
   };
   return (
-    <PageLayout initData={{}}>
+    <PageLayout
+      extraInfo={{
+        pageNormalShow: false,
+      }}
+    >
       <section className={style['user-info']}>
         <img src="http://diy-static.oss-cn-beijing.aliyuncs.com/default-avatar.jpg" alt="logo" />
         <div className={style.info}>

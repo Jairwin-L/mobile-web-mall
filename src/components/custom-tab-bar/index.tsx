@@ -13,7 +13,7 @@ export default function CustomTabBar(props: ICustomTabBar) {
     <>
       {children}
       {tabbarFlag ? (
-        <ElePlaceholder fixType="BOTTOM" placeholderClass={style['placeholder-class']}>
+        <ElePlaceholder fixType="BOTTOM" placeholderClass="placeholder-class">
           <div className={style['tab-bar-container']}>
             <TabBar activeKey={asPath} onChange={(value) => push(value)}>
               {TABS.map((item) => (

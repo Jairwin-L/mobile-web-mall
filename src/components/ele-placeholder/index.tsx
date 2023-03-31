@@ -3,11 +3,11 @@ import style from './index.module.less';
 
 export default function ElePlaceholder({
   fixType = 'BOTTOM',
-  placeholderClass,
+  placeholderClass = '',
   children,
 }: {
   fixType?: 'BOTTOM' | 'TOP';
-  placeholderClass: string;
+  placeholderClass?: string;
   children: ReactNode;
 }) {
   return (

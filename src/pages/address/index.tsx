@@ -110,7 +110,7 @@ export default function Address(props: IServerSideProps<IQueryAddress.Resp>) {
         hasMore={hasMore}
         onLoadMore={onLoadMore}
       />
-      <ElePlaceholder placeholderClass={style['placeholder-class']}>
+      <ElePlaceholder placeholderClass="placeholder-class">
         <Button block color="primary" size="middle" onClick={() => push('./address/add')}>
           <Icon type="icon-create" className={style['icon-add']} />
           添加收货地址
