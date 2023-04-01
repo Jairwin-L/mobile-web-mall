@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import Image from 'next/image';
 import { PageLayout, ElePlaceholder, Icon } from '@/components';
 import { Dialog, SwipeAction, Stepper, Toast } from 'antd-mobile';
 import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
@@ -112,7 +113,14 @@ export default function Shop(props: IServerSideProps<IQueryShop.Resp>) {
                       onClick={() => onToggleSelected(index)}
                     />
                     <div className={style['shop-img-container']}>
-                      <img className={style['shop-img']} src={item.url} alt={item.title} />
+                      {/* className={style['shop-img']} src={item.url} alt={item.title} */}
+                      <Image
+                        className={style['shop-img']}
+                        src={item.url as string}
+                        alt={item.title as string}
+                        width={60}
+                        height={60}
+                      />
                     </div>
                     <div className={style['shop-desc']}>
                       <p className={style['shop-title']}>{item.title}</p>

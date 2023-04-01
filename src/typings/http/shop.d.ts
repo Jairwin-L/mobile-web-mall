@@ -6,6 +6,7 @@ declare namespace IQueryShop {
     price?: number;
     buyCount?: number;
     url?: string;
+    nextImage?: string;
     isSelected?: boolean;
     count?: number;
   }

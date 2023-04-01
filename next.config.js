@@ -6,6 +6,16 @@ const nextConfig = {
   distDir: 'dist',
   reactStrictMode: true,
   transpilePackages: ['antd-mobile'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'gw.alicdn.com',
+        port: '',
+        pathname: '/bao/uploaded/**',
+      },
+    ],
+  },
   ...withAntdLess({
     modifyVars: {
       '@primary': '#1677ff',
