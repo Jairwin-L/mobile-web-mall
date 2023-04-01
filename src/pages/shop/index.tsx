@@ -78,8 +78,8 @@ export default function Shop(props: IServerSideProps<IQueryShop.Resp>) {
   };
   return (
     <PageLayout initData={initData}>
-      <div className={style['base-container']}>
-        <div className={style['header-title']}>
+      <main className={style['base-container']}>
+        <section className={style['header-title']}>
           <div className={style.title}>
             <span>
               购物车共计<span className={style.number}>{list?.length ?? '--'}</span>
@@ -89,8 +89,8 @@ export default function Shop(props: IServerSideProps<IQueryShop.Resp>) {
           <div className={style['delete-btn']} onClick={onDel}>
             删除
           </div>
-        </div>
-        <div className={style['shop-list-container']}>
+        </section>
+        <section className={style['shop-list-container']}>
           <ul>
             {list?.map((item, index) => {
               return (
@@ -139,10 +139,10 @@ export default function Shop(props: IServerSideProps<IQueryShop.Resp>) {
               );
             })}
           </ul>
-        </div>
-      </div>
+        </section>
+      </main>
       <ElePlaceholder>
-        <div className={style['shop-footer']}>
+        <section className={style['shop-footer']}>
           <div className={style['shop-selected']} onClick={onSelectedAll}>
             <Icon
               className={style['checkbox-icon']}
@@ -156,7 +156,7 @@ export default function Shop(props: IServerSideProps<IQueryShop.Resp>) {
               结算
             </div>
           </div>
-        </div>
+        </section>
       </ElePlaceholder>
     </PageLayout>
   );

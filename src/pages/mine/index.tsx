@@ -23,7 +23,7 @@ export default function Mine() {
           <p>小mall</p>
         </div>
       </section>
-      <div className={`${style['common-block']} ${style['order-container']}`}>
+      <section className={`${style['common-block']} ${style['order-container']}`}>
         <div className={style['order-all']} onClick={() => push('/order?status=ALL')}>
           <span className={style['order-text']}>我的订单</span>
           <div>
@@ -47,7 +47,7 @@ export default function Mine() {
             })}
           </div>
         </div>
-      </div>
+      </section>
       <List className="simple-container">
         {SIMPLE_LINE.map((item) => {
           return (
