@@ -6,14 +6,20 @@ import { PageLayout } from '@/components';
 import { queryList } from '@/api/modules/category';
 import style from './index.module.less';
 
-export default function Category(props: IServerSideProps<IQueryCategory.Resp>) {
-  const { initData } = props;
-  const dataSource = initData.data || [];
+export async function getServerSideProps() {
+  const resp = await queryList();
+  return {
+    props: resp,
+  };
+}
+
+export default function Category(props: IBaseResp<IQueryCategory.Resp>) {
+  const { data = [] } = props;
   const sideBarRef = useRef<HTMLDivElement>(null);
-  const [activeKey, setActiveKey] = useState<string>(dataSource?.[0]?.id);
+  const [activeKey, setActiveKey] = useState<string>(data?.[0]?.id);
   const onScrollActive = throttle(() => {
     let currentKey = activeKey;
-    for (const item of dataSource) {
+    for (const item of data) {
       const element = document.getElementById(`anchor-${item.id}`);
       if (!element) continue;
       const rect = element.getBoundingClientRect() || {};
@@ -42,17 +48,17 @@ export default function Category(props: IServerSideProps<IQueryCategory.Resp>) {
   }, []);
 
   return (
-    <PageLayout initData={initData}>
+    <PageLayout initData={props}>
       <main className={style.container}>
         <aside className="side">
           <SideBar activeKey={activeKey} onChange={(key) => onChangeSideBar(key)}>
-            {dataSource.map((item) => (
+            {data.map((item) => (
               <SideBar.Item key={item.id} title={item.name} />
             ))}
           </SideBar>
         </aside>
         <section className={style['category-content']} ref={sideBarRef}>
-          {dataSource.map((item) => (
+          {data.map((item) => (
             <Fragment key={item.id}>
               <h3 id={`anchor-${item.id}`}>{item.name}</h3>
               {item?.categoryList?.map((subItem) => {
@@ -76,13 +82,4 @@ export default function Category(props: IServerSideProps<IQueryCategory.Resp>) {
       </main>
     </PageLayout>
   );
-}
-
-export async function getServerSideProps() {
-  const resp = await queryList();
-  return {
-    props: {
-      initData: resp,
-    },
-  };
 }

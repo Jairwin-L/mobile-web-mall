@@ -1,5 +1,5 @@
 interface IServerSideProps<T> {
-  initData: IBaseResp<T>;
+  data: IBaseResp<T>;
 }
 interface IServerSideContext {
   query: NonNullable<

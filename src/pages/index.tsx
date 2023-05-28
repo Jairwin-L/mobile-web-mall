@@ -1,33 +1,136 @@
-import { query } from '@/api/modules/biz';
-import { Button } from 'antd-mobile';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { Swiper, Toast } from 'antd-mobile';
+import { queryList } from '@/api/modules/biz';
+import { LoadMore } from '@/components';
+import { useFetchPageData } from '@/hooks';
+import style from './index.module.less';
 
-export async function getServerSideProps() {
-  const resp = await query({
-    pageIndex: 1,
+export async function getServerSideProps(context: IServerSideContext) {
+  const { query } = context;
+  const { pageIndex = 1 } = query || {};
+  const { data, meta, success } = await queryList({
+    pageIndex,
     pageSize: 10,
   });
+  const dataSource = data?.list || [];
+  const half = Math.ceil(dataSource.length / 2);
+  const leftData = dataSource.splice(0, half);
+  const rightData = dataSource.splice(-half);
   return {
     props: {
-      initData: resp,
+      data: {
+        banners: data?.banners,
+        leftData,
+        rightData,
+      },
+      meta,
+      success,
     },
   };
 }
 
-export default function Main(props: IServerSideProps<IQueryBiz.Resp>) {
-  const { initData } = props;
-  console.log(`initData----->：`, initData);
+export default function Main(props: IBaseResp<IQueryBiz.Resp>) {
+  const { push, asPath } = useRouter();
+  const { data, meta } = props;
+  const { banners = [], leftData = [], rightData = [] } = data || {};
+  const [hasMore, setHasMore] = useState(true);
+  const [leftDataSource, setLeftDataSource] = useState(leftData || []);
+  const [rightDataSource, setRightDataSource] = useState(rightData || []);
+  const onFetchStart = (url: string) => {
+    if (asPath !== url) return;
+    setHasMore(false);
+    Toast.show({
+      icon: 'loading',
+      content: '加载中……',
+    });
+  };
+  const onFetchComplete = () => {
+    setLeftDataSource((val) => [...(val || []), ...(leftData || [])]);
+    setRightDataSource((val) => [...(val || []), ...(rightData || [])]);
+    setHasMore(true);
+    Toast.clear();
+  };
+  const onFetchError = (error: any) => {
+    if (error) {
+      setHasMore(true);
+      Toast.clear();
+    }
+  };
+  const onLoadMore = () => {
+    if (!hasMore) return;
+    push(
+      {
+        query: { pageIndex: meta!.pageIndex + 1 },
+      },
+      asPath,
+      {
+        scroll: false,
+      },
+    );
+  };
+  useFetchPageData(onFetchStart, onFetchComplete, onFetchError);
+  const dataSource = [...leftDataSource, ...rightDataSource] || [];
+
   return (
     <>
-      <Button color="primary">按钮</Button>
-      Main
-      <ul>
-        {Array(50)
-          .fill(1)
-          .map((item, index) => {
-            return <li key={index}>{item}</li>;
+      {banners.length > 0 ? (
+        <Swiper className={style['swiper-wrap']}>
+          {banners.map((item) => {
+            return (
+              <Swiper.Item key={item.id}>
+                <div
+                  className={style['swiper-image']}
+                  style={{
+                    backgroundImage: `url(${item.imgUrl})`,
+                  }}
+                />
+              </Swiper.Item>
+            );
           })}
-      </ul>
-      <p>底部</p>
+        </Swiper>
+      ) : null}
+      {dataSource.length > 0 ? (
+        <div className={style['goods-list']}>
+          <ul>
+            {leftDataSource?.map((item) => {
+              return (
+                <li key={item.id}>
+                  <div
+                    className={style['goods-pic-url']}
+                    style={{
+                      backgroundImage: `url(${item.goodsPicUrl})`,
+                    }}
+                  />
+                  <p>{item.title}</p>
+                  <p>{item.price}</p>
+                </li>
+              );
+            })}
+          </ul>
+          <ul>
+            {rightDataSource?.map((item) => {
+              return (
+                <li key={item.id}>
+                  <div
+                    className={style['goods-pic-url']}
+                    style={{
+                      backgroundImage: `url(${item.goodsPicUrl})`,
+                    }}
+                  />
+                  <p>{item.title}</p>
+                  <p>{item.price}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
+      <LoadMore
+        loadMore={dataSource.length === meta!.totalCount}
+        hasMore={hasMore}
+        onLoadMore={onLoadMore}
+      />
     </>
   );
 }

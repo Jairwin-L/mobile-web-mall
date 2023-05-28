@@ -20,6 +20,8 @@ declare namespace IQueryBiz {
   }
   interface Resp {
     list: List;
+    leftData: List;
+    rightData: List;
     banners: Array<{
       id: number;
       imgUrl: string;

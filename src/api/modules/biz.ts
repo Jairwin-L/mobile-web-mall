@@ -5,7 +5,7 @@ import request from '../index';
  * @description 查
  */
 // 查
-export async function query(params: IQueryBiz.Param): Promise<IBaseResp<IQueryBiz.Resp>> {
+export async function queryList(params: IQueryBiz.Param): Promise<IBaseResp<IQueryBiz.Resp>> {
   try {
     const res = await request.get<IQueryBiz.Resp, IQueryBiz.Param>(MAIN.HOME, params);
     return res;

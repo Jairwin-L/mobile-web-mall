@@ -6,11 +6,28 @@ import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
 import { del, queryList } from '@/api/modules/shop';
 import style from './index.module.less';
 
-export default function Shop(props: IServerSideProps<IQueryShop.Resp>) {
-  const { initData } = props;
+export async function getServerSideProps() {
+  const resp = await queryList();
+  const finalData: IQueryShop.List[] = [];
+  resp?.data?.forEach((item: any) => {
+    finalData.push({
+      ...item,
+      isSelected: false,
+    });
+  });
+  return {
+    props: {
+      ...resp,
+      data: finalData,
+    },
+  };
+}
+
+export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
+  const { data } = props;
   const swipeActionRef = useRef<SwipeActionRef>(null);
   const [allSelected, setAllSelected] = useState<any>(false);
-  const [list, setList] = useState<IQueryShop.Resp>(initData.data || []);
+  const [list, setList] = useState<IQueryShop.Resp>(data || []);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [selectedList, setSelectedList] = useState<any>([]);
   // 下单支付，TODO:需要服务端支持
@@ -76,7 +93,7 @@ export default function Shop(props: IServerSideProps<IQueryShop.Resp>) {
     setAllSelected(priceList.length === originList.length);
   };
   return (
-    <PageLayout initData={initData}>
+    <PageLayout initData={props}>
       <main className={style['base-container']}>
         <section className={style['header-title']}>
           <div className={style.title}>
@@ -157,23 +174,4 @@ export default function Shop(props: IServerSideProps<IQueryShop.Resp>) {
       </ElePlaceholder>
     </PageLayout>
   );
-}
-
-export async function getServerSideProps() {
-  const resp = await queryList();
-  const finalData: IQueryShop.List[] = [];
-  resp?.data?.forEach((item: any) => {
-    finalData.push({
-      ...item,
-      isSelected: false,
-    });
-  });
-  return {
-    props: {
-      initData: {
-        ...resp,
-        data: finalData,
-      },
-    },
-  };
 }

@@ -7,22 +7,20 @@ export async function getServerSideProps(context: IServerSideContext) {
     id: Number(context.query.id),
   });
   return {
-    props: {
-      initData: resp,
-    },
+    props: resp,
   };
 }
 
-export default function Edit(props: IServerSideProps<IQueryAddress.ListItem>) {
-  const { initData } = props;
+export default function Edit(props: IBaseResp<IQueryAddress.ListItem>) {
+  const { data } = props;
   return (
     <PageLayout
-      initData={initData}
+      initData={props}
       extraInfo={{
         navbarTitle: '修改地址',
       }}
     >
-      <FormConfig formModel={initData.data} />
+      <FormConfig formModel={data} />
     </PageLayout>
   );
 }
