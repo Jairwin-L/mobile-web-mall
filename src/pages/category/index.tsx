@@ -14,9 +14,7 @@ export default function Category(props: IServerSideProps<IQueryCategory.Resp>) {
   const onScrollActive = throttle(() => {
     let currentKey = activeKey;
     for (const item of dataSource) {
-      console.log(`->：`, `anchor-${item.id}`);
       const element = document.getElementById(`anchor-${item.id}`);
-			console.log(`element----->：`, element);
       if (!element) continue;
       const rect = element.getBoundingClientRect() || {};
       if (rect.top <= 0) {
@@ -32,12 +30,15 @@ export default function Category(props: IServerSideProps<IQueryCategory.Resp>) {
     document.getElementById(`anchor-${key}`)?.scrollIntoView();
   };
   useEffect(() => {
-    const sideBarCurrent = sideBarRef.current;
-    if (!sideBarCurrent) return;
-    sideBarCurrent.addEventListener('scroll', onScrollActive);
-    return () => {
-      sideBarCurrent.removeEventListener('scroll', onScrollActive);
-    };
+    // TODO:初始化时延迟数据处理(有其他好的办法再修改)
+    setTimeout(() => {
+      const sideBarCurrent = sideBarRef.current;
+      if (!sideBarCurrent) return;
+      sideBarCurrent.addEventListener('scroll', onScrollActive);
+      return () => {
+        sideBarCurrent.removeEventListener('scroll', onScrollActive);
+      };
+    }, 100);
   }, []);
 
   return (
