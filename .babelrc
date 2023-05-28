@@ -1,0 +1,13 @@
+{
+  "presets": [
+    [
+      "next/babel",
+      {
+        "targets": {
+          "chrome": "49",
+          "ios": "10"
+        }
+      }
+    ]
+  ]
+}
