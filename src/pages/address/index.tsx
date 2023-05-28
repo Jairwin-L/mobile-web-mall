@@ -10,7 +10,7 @@ import style from './index.module.less';
 export default function Address(props: IServerSideProps<IQueryAddress.Resp>) {
   const { initData } = props;
   const { push, asPath } = useRouter();
-  const [dataSource, setDataSource] = useState(initData.data);
+  const [dataSource, setDataSource] = useState(initData.data || []);
   const [hasMore, setHasMore] = useState(true);
   const swipeActionRef = useRef<SwipeActionRef>(null);
   const onEditAddress = (item: IQueryAddress.ListItem) => {
@@ -35,8 +35,7 @@ export default function Address(props: IServerSideProps<IQueryAddress.Resp>) {
     });
   };
   const onFetchComplete = () => {
-    // @ts-ignore TODO:
-    setDataSource((val) => [...val, ...initData.data]);
+    setDataSource((val) => [...(val || []), ...(initData.data || [])]);
     setHasMore(true);
     Toast.clear();
   };
@@ -69,7 +68,7 @@ export default function Address(props: IServerSideProps<IQueryAddress.Resp>) {
     >
       <div className={style['address-container']}>
         <ul>
-          {dataSource?.map((item: IQueryAddress.ListItem) => {
+          {dataSource.map((item: IQueryAddress.ListItem) => {
             return (
               <SwipeAction
                 key={item.id}

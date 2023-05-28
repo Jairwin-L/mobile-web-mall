@@ -14,3 +14,7 @@ export enum SHOP {
   LIST = '/shop',
   DEL = '/shop',
 }
+
+export enum CATEGORY {
+  LIST = '/category',
+}

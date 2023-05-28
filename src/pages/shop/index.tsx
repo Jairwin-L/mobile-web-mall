@@ -10,8 +10,7 @@ export default function Shop(props: IServerSideProps<IQueryShop.Resp>) {
   const { initData } = props;
   const swipeActionRef = useRef<SwipeActionRef>(null);
   const [allSelected, setAllSelected] = useState<any>(false);
-  // @ts-ignore TODO:ts需要修复
-  const [list, setList] = useState<IQueryShop.Resp>(initData?.data);
+  const [list, setList] = useState<IQueryShop.Resp>(initData.data || []);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [selectedList, setSelectedList] = useState<any>([]);
   // 下单支付，TODO:需要服务端支持
@@ -113,9 +112,7 @@ export default function Shop(props: IServerSideProps<IQueryShop.Resp>) {
                       onClick={() => onToggleSelected(index)}
                     />
                     <div className={style['shop-img-container']}>
-                      {/* className={style['shop-img']} src={item.url} alt={item.title} */}
                       <Image
-                        className={style['shop-img']}
                         src={item.url as string}
                         alt={item.title as string}
                         width={60}

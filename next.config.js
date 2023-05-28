@@ -1,20 +1,34 @@
 // use less: https://github.com/SolidZORO/next-plugin-antd-less
 const withAntdLess = require('next-plugin-antd-less');
 
+const REMOTE_PATTERNS = [
+  {
+    protocol: 'https',
+    hostname: 'gw.alicdn.com',
+    port: '',
+    pathname: '/**',
+  },
+  {
+    protocol: 'https',
+    hostname: 'yanxuan.nosdn.127.net',
+    port: '',
+    pathname: '/**',
+  },
+  {
+    protocol: 'https',
+    hostname: 'yanxuan-item.nosdn.127.net',
+    port: '',
+    pathname: '/**',
+  },
+];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: 'dist',
   reactStrictMode: true,
   transpilePackages: ['antd-mobile'],
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'gw.alicdn.com',
-        port: '',
-        pathname: '/bao/uploaded/**',
-      },
-    ],
+    remotePatterns: REMOTE_PATTERNS,
   },
   ...withAntdLess({
     modifyVars: {

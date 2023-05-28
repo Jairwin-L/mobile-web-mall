@@ -5,6 +5,7 @@ specifiers:
   '@babel/core': ^7.20.12
   '@babel/preset-env': ^7.20.2
   '@next/font': 13.1.6
+  '@types/lodash.throttle': ^4.1.7
   '@types/node': 18.13.0
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.10
@@ -13,6 +14,7 @@ specifiers:
   china-division: ^2.6.1
   f2elint: ^2.2.1
   flyio: ^0.6.14
+  lodash.throttle: ^4.1.1
   next: ^13.2.4
   next-plugin-antd-less: ^1.8.0
   react: 18.2.0
@@ -23,6 +25,7 @@ specifiers:
 dependencies:
   '@ant-design/icons': registry.npmjs.org/@ant-design/icons/5.0.1_biqbaboplfbrettd7655fr4n2y
   '@next/font': registry.npmjs.org/@next/font/13.1.6
+  '@types/lodash.throttle': registry.npmjs.org/@types/lodash.throttle/4.1.7
   '@types/node': registry.npmjs.org/@types/node/18.13.0
   '@types/react': registry.npmjs.org/@types/react/18.0.28
   '@types/react-dom': registry.npmjs.org/@types/react-dom/18.0.10
@@ -30,6 +33,7 @@ dependencies:
   antd-mobile-icons: registry.npmjs.org/antd-mobile-icons/0.3.0
   china-division: registry.npmjs.org/china-division/2.6.1
   flyio: registry.npmjs.org/flyio/0.6.14
+  lodash.throttle: registry.npmjs.org/lodash.throttle/4.1.1
   next: registry.npmjs.org/next/13.2.4_hrdbe576m4w26u2yfpqpvbxyky
   next-plugin-antd-less: registry.npmjs.org/next-plugin-antd-less/1.8.0
   react: registry.npmjs.org/react/18.2.0
@@ -2220,6 +2224,20 @@ packages:
     name: '@types/json5'
     version: 0.0.29
     dev: true
+
+  registry.npmjs.org/@types/lodash.throttle/4.1.7:
+    resolution: {integrity: sha512-znwGDpjCHQ4FpLLx19w4OXDqq8+OvREa05H89obtSyXyOFKL3dDjCslsmfBz0T2FU8dmf5Wx1QvogbINiGIu9g==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/lodash.throttle/-/lodash.throttle-4.1.7.tgz}
+    name: '@types/lodash.throttle'
+    version: 4.1.7
+    dependencies:
+      '@types/lodash': registry.npmjs.org/@types/lodash/4.14.192
+    dev: false
+
+  registry.npmjs.org/@types/lodash/4.14.192:
+    resolution: {integrity: sha512-km+Vyn3BYm5ytMO13k9KTp27O75rbQ0NFw+U//g+PX7VZyjCioXaRFisqSIJRECljcTv73G3i6BpglNGHgUQ5A==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/lodash/-/lodash-4.14.192.tgz}
+    name: '@types/lodash'
+    version: 4.14.192
+    dev: false
 
   registry.npmjs.org/@types/mdast/3.0.11:
     resolution: {integrity: sha512-Y/uImid8aAwrEA24/1tcRZwpxX3pIFTSilcNDKSPn+Y2iDywSEachzRuvgAYYLR3wpGXAsMbv5lvKLDZLeYPAw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/mdast/-/mdast-3.0.11.tgz}
@@ -5730,6 +5748,12 @@ packages:
     name: lodash.merge
     version: 4.6.2
     dev: true
+
+  registry.npmjs.org/lodash.throttle/4.1.1:
+    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz}
+    name: lodash.throttle
+    version: 4.1.1
+    dev: false
 
   registry.npmjs.org/lodash.truncate/4.4.2:
     resolution: {integrity: sha512-jttmRe7bRse52OsWIMDLaXxWqRAmtIUccAQ3garviCqJjafXOfNMO0yMfNpdD6zbGaTU0P5Nz7e7gAT6cKmJRw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/lodash.truncate/-/lodash.truncate-4.4.2.tgz}
