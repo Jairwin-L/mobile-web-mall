@@ -17,7 +17,7 @@
     "@types/node": "18.13.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.10",
-    "antd-mobile": "^5.28.1",
+    "antd-mobile": "^5.30.0",
     "antd-mobile-icons": "^0.3.0",
     "china-division": "^2.6.1",
     "flyio": "^0.6.14",
