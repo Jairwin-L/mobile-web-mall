@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import { PageLayout, ElePlaceholder, Icon } from '@/components';
+import { PageLayout, ElePlaceholder, Icon, PageData } from '@/components';
 import { Dialog, SwipeAction, Stepper, Toast } from 'antd-mobile';
 import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
 import { del, queryList } from '@/api/modules/shop';
@@ -95,83 +95,85 @@ export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
   return (
     <PageLayout initData={props}>
       <main className={style['base-container']}>
-        <section className={style['header-title']}>
-          <div className={style.title}>
-            <span>
-              购物车共计<span className={style.number}>{list?.length ?? '--'}</span>
-              件商品
-            </span>
-          </div>
-          <div className={style['delete-btn']} onClick={onDel}>
-            删除
-          </div>
-        </section>
-        <section className={style['shop-list-container']}>
-          <ul>
-            {list?.map((item, index) => {
-              return (
-                <SwipeAction
-                  key={item.id}
-                  ref={swipeActionRef}
-                  rightActions={[
-                    {
-                      key: 'delete',
-                      text: '删除',
-                      color: 'danger',
-                      onClick: () => onDelSingleItem(item),
-                    },
-                  ]}
-                >
-                  <li>
-                    <Icon
-                      className={style['checkbox-icon']}
-                      type={item?.isSelected ? 'selected' : 'unselected'}
-                      onClick={() => onToggleSelected(index)}
-                    />
-                    <div className={style['shop-img-container']}>
-                      <Image
-                        src={item.url as string}
-                        alt={item.title as string}
-                        width={60}
-                        height={60}
+        <PageData dataSource={list}>
+          <section className={style['header-title']}>
+            <div className={style.title}>
+              <span>
+                购物车共计<span className={style.number}>{list?.length ?? '--'}</span>
+                件商品
+              </span>
+            </div>
+            <div className={style['delete-btn']} onClick={onDel}>
+              删除
+            </div>
+          </section>
+          <section className={style['shop-list-container']}>
+            <ul>
+              {list.map((item, index) => {
+                return (
+                  <SwipeAction
+                    key={item.id}
+                    ref={swipeActionRef}
+                    rightActions={[
+                      {
+                        key: 'delete',
+                        text: '删除',
+                        color: 'danger',
+                        onClick: () => onDelSingleItem(item),
+                      },
+                    ]}
+                  >
+                    <li>
+                      <Icon
+                        className={style['checkbox-icon']}
+                        type={item?.isSelected ? 'selected' : 'unselected'}
+                        onClick={() => onToggleSelected(index)}
                       />
-                    </div>
-                    <div className={style['shop-desc']}>
-                      <p className={style['shop-title']}>{item.title}</p>
-                      <div className={style['shop-money']}>
-                        <span>¥{item.price ?? 0}</span>
-                        <Stepper
-                          value={item.count}
-                          min={1}
-                          max={100000}
-                          onChange={(value: number) => onCalculatePrice(index, value)}
+                      <div className={style['shop-img-container']}>
+                        <Image
+                          src={item.url as string}
+                          alt={item.title as string}
+                          width={60}
+                          height={60}
                         />
                       </div>
-                    </div>
-                  </li>
-                </SwipeAction>
-              );
-            })}
-          </ul>
-        </section>
+                      <div className={style['shop-desc']}>
+                        <p className={style['shop-title']}>{item.title}</p>
+                        <div className={style['shop-money']}>
+                          <span>¥{item.price ?? 0}</span>
+                          <Stepper
+                            value={item.count}
+                            min={1}
+                            max={100000}
+                            onChange={(value: number) => onCalculatePrice(index, value)}
+                          />
+                        </div>
+                      </div>
+                    </li>
+                  </SwipeAction>
+                );
+              })}
+            </ul>
+          </section>
+          <ElePlaceholder>
+            <section className={style['shop-footer']}>
+              <div className={style['shop-selected']} onClick={onSelectedAll}>
+                <Icon
+                  className={style['checkbox-icon']}
+                  type={allSelected ? 'selected' : 'unselected'}
+                />
+                <span>全选</span>
+              </div>
+              <div className={style['footer-price']}>
+                <div className={style['total-price']}>合计：¥{totalPrice}</div>
+                <div className={style['calculate-btn']} onClick={onPayOrder}>
+                  结算
+                </div>
+              </div>
+            </section>
+          </ElePlaceholder>
+        </PageData>
       </main>
-      <ElePlaceholder>
-        <section className={style['shop-footer']}>
-          <div className={style['shop-selected']} onClick={onSelectedAll}>
-            <Icon
-              className={style['checkbox-icon']}
-              type={allSelected ? 'selected' : 'unselected'}
-            />
-            <span>全选</span>
-          </div>
-          <div className={style['footer-price']}>
-            <div className={style['total-price']}>合计：¥{totalPrice}</div>
-            <div className={style['calculate-btn']} onClick={onPayOrder}>
-              结算
-            </div>
-          </div>
-        </section>
-      </ElePlaceholder>
     </PageLayout>
   );
 }

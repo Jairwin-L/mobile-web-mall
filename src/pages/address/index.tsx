@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button, Dialog, SwipeAction, Tag, Toast } from 'antd-mobile';
 import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
-import { ElePlaceholder, Icon, LoadMore, PageLayout } from '@/components';
+import { ElePlaceholder, Icon, LoadMore, PageData, PageLayout } from '@/components';
 import { del, queryList } from '@/api/modules/address';
 import { useFetchPageData } from '@/hooks';
 import style from './index.module.less';
@@ -78,7 +78,7 @@ export default function Address(props: IBaseResp<IQueryAddress.Resp>) {
         navbarTitle: '地址',
       }}
     >
-      {dataSource.length > 0 ? (
+      <PageData dataSource={[dataSource]}>
         <div className={style['address-container']}>
           <ul>
             {dataSource.map((item: IQueryAddress.ListItem) => {
@@ -117,12 +117,12 @@ export default function Address(props: IBaseResp<IQueryAddress.Resp>) {
             })}
           </ul>
         </div>
-      ) : null}
-      <LoadMore
-        loadMore={dataSource?.length === meta?.totalCount}
-        hasMore={hasMore}
-        onLoadMore={onLoadMore}
-      />
+        <LoadMore
+          loadMore={dataSource?.length === meta?.totalCount}
+          hasMore={hasMore}
+          onLoadMore={onLoadMore}
+        />
+      </PageData>
       <ElePlaceholder placeholderClass="placeholder-class">
         <Button block color="primary" size="middle" onClick={() => push('./address/add')}>
           <Icon type="icon-create" className={style['icon-add']} />
