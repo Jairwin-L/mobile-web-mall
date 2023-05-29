@@ -26,6 +26,10 @@ declare namespace IQueryBiz {
       id: number;
       imgUrl: string;
     }>;
+    categoryNav?: Array<{
+      icon: string;
+      label: string;
+    }>;
     page: CommonPage;
   }
 }

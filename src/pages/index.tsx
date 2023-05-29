@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Swiper, Toast } from 'antd-mobile';
 import { queryList } from '@/api/modules/biz';
-import { LoadMore } from '@/components';
+import { Icon, LoadMore } from '@/components';
 import { useFetchPageData } from '@/hooks';
 import style from './index.module.less';
 
@@ -23,6 +23,7 @@ export async function getServerSideProps(context: IServerSideContext) {
         banners: data?.banners,
         leftData,
         rightData,
+        categoryNav: data?.categoryNav,
       },
       meta,
       success,
@@ -33,10 +34,17 @@ export async function getServerSideProps(context: IServerSideContext) {
 export default function Main(props: IBaseResp<IQueryBiz.Resp>) {
   const { push, asPath } = useRouter();
   const { data, meta } = props;
-  const { banners = [], leftData = [], rightData = [] } = data || {};
+  const { banners = [], leftData = [], rightData = [], categoryNav = [] } = data || {};
   const [hasMore, setHasMore] = useState(true);
   const [leftDataSource, setLeftDataSource] = useState(leftData || []);
   const [rightDataSource, setRightDataSource] = useState(rightData || []);
+  const onCategoryNav = (item: { icon: string; label: string }) => {
+    console.log(`onCategoryNav----->：`, item);
+  };
+  const onGotoDetail = (item: IQueryBiz.ListItem) => {
+    console.log(`onGotoDetail----->：`, item);
+  };
+
   const onFetchStart = (url: string) => {
     if (asPath !== url) return;
     setHasMore(false);
@@ -90,12 +98,26 @@ export default function Main(props: IBaseResp<IQueryBiz.Resp>) {
           })}
         </Swiper>
       ) : null}
+      {categoryNav.length > 0 ? (
+        <div className={style['category-nav']}>
+          <ul>
+            {categoryNav.map((item) => {
+              return (
+                <li key={item.icon} onClick={() => onCategoryNav(item)}>
+                  <Icon className={style['category-icon']} type={item.icon} />
+                  <span className={style['category-label']}>{item.label}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
       {dataSource.length > 0 ? (
         <div className={style['goods-list']}>
           <ul>
             {leftDataSource?.map((item) => {
               return (
-                <li key={item.id}>
+                <li key={item.id} onClick={() => onGotoDetail(item)}>
                   <div
                     className={style['goods-pic-url']}
                     style={{
@@ -111,7 +133,7 @@ export default function Main(props: IBaseResp<IQueryBiz.Resp>) {
           <ul>
             {rightDataSource?.map((item) => {
               return (
-                <li key={item.id}>
+                <li key={item.id} onClick={() => onGotoDetail(item)}>
                   <div
                     className={style['goods-pic-url']}
                     style={{

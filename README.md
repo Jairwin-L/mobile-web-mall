@@ -8,7 +8,7 @@ https://mobile-web-mall.vercel.app/
 
 [Nextjs](https://nextjs.org/)
 
-## UI 组件库
+## UI Component
 
 [antd-mobile](https://mobile.ant.design/zh)
 
