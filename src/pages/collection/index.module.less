@@ -1,5 +1,43 @@
-.submit-btn {
-  width: 94%;
-  margin: 0 auto;
-  margin-top: 10px;
+.shop-list-container {
+  width: 95%;
+  margin: 10px auto;
+  ul {
+    li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background: @white;
+      margin-bottom: 10px;
+      .goods-pic-url {
+        width: 100px;
+        height: 80px;
+        border-radius: 5px;
+        background-size: cover;
+        background-position: center;
+        margin-right: 10px;
+      }
+      .shop-desc {
+        width: 100%;
+        .shop-title {
+          display: -webkit-box;
+          height: 35px;
+          margin-bottom: 5px;
+          overflow: hidden;
+          line-height: 18px;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        .shop-money {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          span {
+            color: @default-black;
+            font-size: @small-font-size;
+          }
+        }
+      }
+    }
+  }
 }

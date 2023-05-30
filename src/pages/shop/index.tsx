@@ -39,7 +39,7 @@ export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
     }
   };
   // 商品删除
-  const onDel = () => {
+  const onDelAll = () => {
     if (selectedList.length <= 0) {
       return Toast.show({
         content: '您还没有选择宝贝哦',
@@ -47,7 +47,7 @@ export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
     }
   };
   // 单个购物车删除，TODO:需要服务端支持
-  const onDelSingleItem = (item: IQueryShop.ListItem) => {
+  const onDelItem = (item: IQueryShop.ListItem) => {
     Dialog.confirm({
       content: `确定要删除“${item.title}”嘛？`,
       onConfirm: async () => {
@@ -103,7 +103,7 @@ export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
                 件商品
               </span>
             </div>
-            <div className={style['delete-btn']} onClick={onDel}>
+            <div className={style['delete-btn']} onClick={onDelAll}>
               删除
             </div>
           </section>
@@ -119,7 +119,7 @@ export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
                         key: 'delete',
                         text: '删除',
                         color: 'danger',
-                        onClick: () => onDelSingleItem(item),
+                        onClick: () => onDelItem(item),
                       },
                     ]}
                   >

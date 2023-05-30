@@ -21,3 +21,8 @@ interface ILoadMore {
 interface ILoading {
   text?: string;
 }
+
+interface IPageData {
+  dataSource: any;
+  children: React.ReactNode;
+}

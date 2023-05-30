@@ -10,6 +10,12 @@ export enum ADDRESS {
   DEL = '/address',
 }
 
+export enum COLLECTION {
+  LIST = '/collection',
+  CREATE = '/collection',
+  DEL = '/collection',
+}
+
 export enum SHOP {
   LIST = '/shop',
   DEL = '/shop',

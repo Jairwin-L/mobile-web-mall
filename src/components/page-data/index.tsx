@@ -1,7 +1,7 @@
 import { ErrorBlock } from 'antd-mobile';
 import AutoCenter from '../auto-center';
 
-export default function PageData(props: any) {
+export default function PageData(props: IPageData) {
   const { dataSource = [], children } = props;
   return (
     <>
