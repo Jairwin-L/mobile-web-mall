@@ -6,12 +6,11 @@ import { SYSTEM_ERROR_MSG } from '@/constants/api';
 import { LoopOutline } from 'antd-mobile-icons';
 
 export default function PageLayout(props: IPageLayout) {
-  const { reload, isReady } = useRouter();
+  const { reload, isReady, back } = useRouter();
   const [loading, setLoading] = useState(true);
   const { children, initData, extraInfo } = props || {};
   const { msg = '', success = false } = initData || {};
   const { navbarTitle, pageNormalShow = true } = extraInfo || {};
-  const { back } = useRouter();
   const TopNavBar = () => {
     return (
       <>

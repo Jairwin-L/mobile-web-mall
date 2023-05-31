@@ -28,3 +28,9 @@ export enum CATEGORY {
 export enum ORDER {
   LIST = '/order',
 }
+
+export enum AUTH {
+  CHANGE_PASSWORD = '/change-password',
+  LOGIN = '/login',
+  REGISTER = '/register',
+}

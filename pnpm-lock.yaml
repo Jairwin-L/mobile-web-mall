@@ -4,7 +4,7 @@ specifiers:
   '@ant-design/icons': ^5.0.1
   '@babel/core': ^7.20.12
   '@babel/preset-env': ^7.20.2
-  '@next/font': 13.1.6
+  '@next/font': ^13.4.4
   '@types/lodash.throttle': ^4.1.7
   '@types/node': 18.13.0
   '@types/react': 18.0.28
@@ -25,7 +25,7 @@ specifiers:
 
 dependencies:
   '@ant-design/icons': registry.npmjs.org/@ant-design/icons/5.0.1_biqbaboplfbrettd7655fr4n2y
-  '@next/font': registry.npmjs.org/@next/font/13.1.6
+  '@next/font': registry.npmjs.org/@next/font/13.4.4
   '@types/lodash.throttle': registry.npmjs.org/@types/lodash.throttle/4.1.7
   '@types/node': registry.npmjs.org/@types/node/18.13.0
   '@types/react': registry.npmjs.org/@types/react/18.0.28
@@ -1904,10 +1904,10 @@ packages:
     version: 13.2.4
     dev: false
 
-  registry.npmjs.org/@next/font/13.1.6:
-    resolution: {integrity: sha512-AITjmeb1RgX1HKMCiA39ztx2mxeAyxl4ljv2UoSBUGAbFFMg8MO7YAvjHCgFhD39hL7YTbFjol04e/BPBH5RzQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@next/font/-/font-13.1.6.tgz}
+  registry.npmjs.org/@next/font/13.4.4:
+    resolution: {integrity: sha512-iYmL/O0rV9NS8a2UXuRoZOzImz8Q0mM8bAmxtj8nccrpwZ6iOOZlbf2d0Genczl4wtuXRXVPR8goGjJM4C2SDg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@next/font/-/font-13.4.4.tgz}
     name: '@next/font'
-    version: 13.1.6
+    version: 13.4.4
     dev: false
 
   registry.npmjs.org/@next/swc-android-arm-eabi/13.2.4:
