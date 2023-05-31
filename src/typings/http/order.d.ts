@@ -1,4 +1,4 @@
-declare namespace IQueryCollection {
+declare namespace IQueryOrder {
   type List = ListItem[];
   interface ListItem {
     id?: number;

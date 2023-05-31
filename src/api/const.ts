@@ -24,3 +24,7 @@ export enum SHOP {
 export enum CATEGORY {
   LIST = '/category',
 }
+
+export enum ORDER {
+  LIST = '/order',
+}
