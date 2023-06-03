@@ -42,7 +42,7 @@ export default function Main(props: IBaseResp<IQueryBiz.Resp>) {
     console.log(`onCategoryNav----->：`, item);
   };
   const onGotoDetail = (item: IQueryBiz.ListItem) => {
-    console.log(`onGotoDetail----->：`, item);
+    push(`/detail/${item.id}`, undefined, { shallow: true });
   };
 
   const onFetchStart = (url: string) => {

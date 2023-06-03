@@ -19,6 +19,7 @@ export enum COLLECTION {
 export enum SHOP {
   LIST = '/shop',
   DEL = '/shop',
+  SHOW = '/shop',
 }
 
 export enum CATEGORY {

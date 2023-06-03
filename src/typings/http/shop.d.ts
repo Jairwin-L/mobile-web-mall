@@ -10,8 +10,29 @@ declare namespace IQueryShop {
     isSelected?: boolean;
     count?: number;
   }
-  interface DelParam {
+  interface Param {
     id: number;
+  }
+  interface BuildOrderResp {
+    buildOrderData: IBaseResp<IQueryShop.DetailResp>;
+    addressData: IBaseResp<IQueryAddress.Resp>;
+  }
+  interface DetailResp {
+    id: number;
+    title?: string;
+    price?: number;
+    goodsPicUrl?: string;
+    collection?: boolean;
+    sku?: {
+      imgUrl?: string;
+      weight?: any;
+      amount?: number;
+      color?: any;
+    };
+    banners?: Array<{
+      id: number;
+      imgUrl: string;
+    }>;
   }
   type Resp = List;
 }

@@ -9,13 +9,8 @@ declare namespace IQueryCollection {
   interface DelParam {
     id: number;
   }
-  type Param = Partial<{
+  interface Param {
     id?: number;
-    title?: string;
-    price?: number;
-  }> & {
-    pageIndex: number;
-    pageSize: number;
-  };
+  }
   type Resp = List;
 }

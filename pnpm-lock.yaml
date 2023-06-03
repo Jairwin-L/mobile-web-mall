@@ -12,6 +12,7 @@ specifiers:
   antd-mobile: ^5.30.0
   antd-mobile-icons: ^0.3.0
   china-division: ^2.6.1
+  clsx: ^1.2.1
   f2elint: ^2.2.1
   flyio: ^0.6.14
   less-loader: ^11.1.1
@@ -33,6 +34,7 @@ dependencies:
   antd-mobile: registry.npmjs.org/antd-mobile/5.30.0_biqbaboplfbrettd7655fr4n2y
   antd-mobile-icons: registry.npmjs.org/antd-mobile-icons/0.3.0
   china-division: registry.npmjs.org/china-division/2.6.1
+  clsx: registry.npmjs.org/clsx/1.2.1
   flyio: registry.npmjs.org/flyio/0.6.14
   lodash.throttle: registry.npmjs.org/lodash.throttle/4.1.1
   next: registry.npmjs.org/next/13.2.4_hrdbe576m4w26u2yfpqpvbxyky
@@ -3214,6 +3216,13 @@ packages:
     name: clone
     version: 2.1.2
     engines: {node: '>=0.8'}
+    dev: false
+
+  registry.npmjs.org/clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/clsx/-/clsx-1.2.1.tgz}
+    name: clsx
+    version: 1.2.1
+    engines: {node: '>=6'}
     dev: false
 
   registry.npmjs.org/color-convert/1.9.3:

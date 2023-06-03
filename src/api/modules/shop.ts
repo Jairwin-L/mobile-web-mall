@@ -14,11 +14,20 @@ export async function queryList(): Promise<IBaseResp<IQueryShop.Resp>> {
     return {};
   }
 }
-
-// 删除
-export async function del(params: IQueryShop.DelParam): Promise<IBaseResp<string>> {
+// 详情
+export async function show(params: IQueryShop.Param): Promise<IBaseResp<string>> {
   try {
-    const res = await request.delete<string, IQueryShop.DelParam>(SHOP.DEL, params);
+    const res = await request.get<string, IQueryShop.Param>(SHOP.SHOW, params);
+    return res;
+  } catch (error) {
+    console.error(`delete:${SHOP.SHOW}----->：`, error);
+    return {};
+  }
+}
+// 删除
+export async function del(params: IQueryShop.Param): Promise<IBaseResp<string>> {
+  try {
+    const res = await request.delete<string, IQueryShop.Param>(SHOP.DEL, params);
     return res;
   } catch (error) {
     console.error(`delete:${SHOP.DEL}----->：`, error);
