@@ -1,7 +1,13 @@
-import { ElePlaceholder, PageLayout, Panel } from '@/components';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { Popup } from 'antd-mobile';
+import clsx from 'clsx';
+import { CheckOutline, CloseOutline, RightOutline } from 'antd-mobile-icons';
+import { ElePlaceholder, Icon, PageLayout, Panel } from '@/components';
 import style from './index.module.less';
 import { show } from '@/api/modules/shop';
 import { queryList } from '@/api/modules/address';
+import { getCodeToText } from '@/utils';
 
 export async function getServerSideProps(context: IServerSideContext) {
   const { query } = context;
@@ -31,7 +37,11 @@ export async function getServerSideProps(context: IServerSideContext) {
 
 export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
   const { buildOrderData = {}, addressData = {} } = props;
-  console.log(`addressData----->：`, addressData);
+  const { push } = useRouter();
+  const addressDataSource = addressData.data || [];
+  const [visible, setVisible] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState(addressData.data?.[0]);
+  const addressExitFlag = addressDataSource?.length <= 0;
   const {
     title,
     // price,
@@ -41,6 +51,18 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
   const onSubmitOrder = () => {
     console.log(`onSubmitOrder----->：`);
   };
+  const onOpenAddressPanel = () => {
+    if (addressExitFlag) {
+      push('/address/add');
+      return;
+    }
+    setVisible(true);
+  };
+  const onSelectedAddress = (item: IQueryAddress.ListItem) => {
+    if (item.code?.join('') === selectedAddress?.code?.join('')) return;
+    setSelectedAddress(item);
+    setVisible(false);
+  };
   return (
     <PageLayout
       initData={buildOrderData}
@@ -48,9 +70,23 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
         navbarTitle: '生成订单',
       }}
     >
-      <Panel leftIcon={<div>left</div>} rightIcon={<div>right</div>}>
-        {title}
+      <Panel
+        leftIcon={<Icon type="address" />}
+        rightIcon={<RightOutline />}
+        onClick={onOpenAddressPanel}
+      >
+        <div>
+          {!addressExitFlag ? (
+            <>
+              <p>{getCodeToText(selectedAddress?.code)}</p>
+              <p>{selectedAddress?.phone}</p>
+            </>
+          ) : (
+            <>添加地址</>
+          )}
+        </div>
       </Panel>
+      <Panel>{title}</Panel>
       <ElePlaceholder
         placeholderClass="placeholder-class"
         className={style['submit-order--footer']}
@@ -59,6 +95,43 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
           提交订单
         </div>
       </ElePlaceholder>
+      <Popup
+        visible={visible}
+        bodyStyle={{
+          borderTopLeftRadius: '8px',
+          borderTopRightRadius: '8px',
+        }}
+      >
+        <div className={style['address-header']}>
+          <span>选择地址</span>
+          <CloseOutline onClick={() => setVisible(false)} />
+        </div>
+        <div className={style['address-popup-wrap']}>
+          {addressDataSource?.map((item: IQueryAddress.ListItem) => {
+            return (
+              <Panel
+                rightIcon={
+                  <>
+                    {item.code?.join('') === selectedAddress?.code?.join('') ? (
+                      <CheckOutline />
+                    ) : null}
+                  </>
+                }
+                className={clsx({
+                  [style['address-disabled']]:
+                    item.code?.join('') === selectedAddress?.code?.join(''),
+                })}
+                onClick={() => onSelectedAddress(item)}
+              >
+                <div>
+                  <p>{getCodeToText(item.code)}</p>
+                  <p>{item?.phone}</p>
+                </div>
+              </Panel>
+            );
+          })}
+        </div>
+      </Popup>
     </PageLayout>
   );
 }

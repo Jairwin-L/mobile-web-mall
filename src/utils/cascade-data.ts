@@ -58,7 +58,8 @@ function genCascadeData() {
  * @module getCodeToText
  * @description 级联code转文案
  */
-function getCodeToText(codes: string[]) {
+function getCodeToText(codes: string[] = []) {
+  if (codes.length <= 0) return '';
   const option = genCascadeData();
   let provinceCodeText = '';
   let cityCodeText = '';
