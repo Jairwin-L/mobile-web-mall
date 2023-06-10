@@ -28,6 +28,7 @@ export enum CATEGORY {
 
 export enum ORDER {
   LIST = '/order',
+  CREATE = '/order',
 }
 
 export enum AUTH {

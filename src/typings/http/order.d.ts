@@ -9,6 +9,10 @@ declare namespace IQueryOrder {
   interface DelParam {
     id: number;
   }
+  interface CreateParam {
+    id: number;
+    remark?: string;
+  }
   type Param = Partial<{
     id?: number;
     title?: string;

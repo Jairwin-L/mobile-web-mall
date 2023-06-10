@@ -2,6 +2,7 @@
   padding: 10px;
 }
 .bar-buy-now {
+  width: 100%;
   padding: 10px;
   color: @white;
   border-radius: 30px;
@@ -24,5 +25,40 @@
   .address-disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+}
+.goods-info {
+  display: flex;
+  align-items: center;
+  background: @white;
+  .goods-pic-url {
+    width: 100px;
+    height: 80px;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+  }
+  .shop-desc {
+    width: 100%;
+    .shop-title {
+      display: -webkit-box;
+      height: 35px;
+      margin-bottom: 5px;
+      overflow: hidden;
+      line-height: 18px;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .shop-money {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      span {
+        color: @default-black;
+        font-size: @small-font-size;
+      }
+    }
   }
 }

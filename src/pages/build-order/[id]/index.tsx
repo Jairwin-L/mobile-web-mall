@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Popup } from 'antd-mobile';
+import { Button, Input, Popup } from 'antd-mobile';
 import clsx from 'clsx';
 import { CheckOutline, CloseOutline, RightOutline } from 'antd-mobile-icons';
+import debounce from 'lodash.debounce';
 import { ElePlaceholder, Icon, PageLayout, Panel } from '@/components';
 import style from './index.module.less';
 import { show } from '@/api/modules/shop';
 import { queryList } from '@/api/modules/address';
 import { getCodeToText } from '@/utils';
+import { create } from '@/api/modules/order';
 
 export async function getServerSideProps(context: IServerSideContext) {
   const { query } = context;
@@ -37,18 +39,34 @@ export async function getServerSideProps(context: IServerSideContext) {
 
 export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
   const { buildOrderData = {}, addressData = {} } = props;
-  const { push } = useRouter();
+  const { push, replace } = useRouter();
   const addressDataSource = addressData.data || [];
   const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [remark, setRemark] = useState('');
   const [selectedAddress, setSelectedAddress] = useState(addressData.data?.[0]);
   const addressExitFlag = addressDataSource?.length <= 0;
   const {
     title,
-    // price,
-    // id,
+    price,
+    id,
+    goodsPicUrl,
     // sku = {},
   } = buildOrderData.data || {};
-  const onSubmitOrder = () => {
+  const onSubmitOrder = async () => {
+    setLoading(true);
+    try {
+      const { success } = await create({
+        id: Number(id),
+        remark,
+      });
+      setLoading(false);
+      if (!success) return;
+      replace('/');
+    } catch (error) {
+      setLoading(false);
+      console.error(`------>`, error);
+    }
     console.log(`onSubmitOrder----->：`);
   };
   const onOpenAddressPanel = () => {
@@ -63,6 +81,10 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
     setSelectedAddress(item);
     setVisible(false);
   };
+  // 备注
+  const onRemarkChange = debounce((value: string) => {
+    setRemark(value.replace(' ', ''));
+  }, 100);
   return (
     <PageLayout
       initData={buildOrderData}
@@ -71,8 +93,8 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
       }}
     >
       <Panel
-        leftIcon={<Icon type="address" />}
-        rightIcon={<RightOutline />}
+        leftContent={<Icon type="address" />}
+        rightContent={<RightOutline />}
         onClick={onOpenAddressPanel}
       >
         <div>
@@ -86,14 +108,32 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
           )}
         </div>
       </Panel>
-      <Panel>{title}</Panel>
+      <Panel>
+        <div className={style['goods-info']}>
+          <div
+            className={style['goods-pic-url']}
+            style={{
+              backgroundImage: `url(${goodsPicUrl})`,
+            }}
+          />
+          <div className={style['shop-desc']}>
+            <p className={style['shop-title']}>{title}</p>
+            <div className={style['shop-money']}>
+              <span>¥{price ?? 0}</span>
+            </div>
+          </div>
+        </div>
+      </Panel>
+      <Panel leftContent={<>备注</>}>
+        <Input placeholder="请输入备注" value={remark} clearable onChange={onRemarkChange} />
+      </Panel>
       <ElePlaceholder
         placeholderClass="placeholder-class"
         className={style['submit-order--footer']}
       >
-        <div className={style['bar-buy-now']} onClick={onSubmitOrder}>
+        <Button loading={loading} className={style['bar-buy-now']} onClick={onSubmitOrder}>
           提交订单
-        </div>
+        </Button>
       </ElePlaceholder>
       <Popup
         visible={visible}
@@ -110,7 +150,7 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
           {addressDataSource?.map((item: IQueryAddress.ListItem) => {
             return (
               <Panel
-                rightIcon={
+                rightContent={
                   <>
                     {item.code?.join('') === selectedAddress?.code?.join('') ? (
                       <CheckOutline />

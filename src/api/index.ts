@@ -76,6 +76,12 @@ class Request {
     method: 'get' | 'post' | 'put' | 'delete',
     params?: Param,
   ): Promise<IBaseResp<Resp>> {
+    if (method === 'post' || method === 'put' || method === 'delete') {
+      Toast.show({
+        content: '加载中……',
+        icon: 'loading',
+      });
+    }
     const response = await fly[method](`${this.BASE_URL}${url}`, params);
     return response;
   }

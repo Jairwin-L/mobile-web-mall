@@ -3,14 +3,14 @@ import style from './index.module.less';
 import clsx from 'clsx';
 
 export default function Panel({
-  leftIcon,
-  rightIcon,
+  leftContent,
+  rightContent,
   children,
   onClick,
   className,
 }: {
-  leftIcon?: ReactNode;
-  rightIcon?: ReactNode;
+  leftContent?: ReactNode;
+  rightContent?: ReactNode;
   children: ReactNode;
   className?: any;
   onClick?: any;
@@ -18,15 +18,15 @@ export default function Panel({
   return (
     <div
       className={clsx(style['panel-wrapper'], className, {
-        [style['panel-wrapper-all']]: leftIcon && rightIcon,
-        [style['panel-wrapper-left']]: leftIcon && !rightIcon,
-        [style['panel-wrapper-right']]: rightIcon && !leftIcon,
+        [style['panel-wrapper-all']]: leftContent && rightContent,
+        [style['panel-wrapper-left']]: leftContent && !rightContent,
+        [style['panel-wrapper-right']]: rightContent && !leftContent,
       })}
       onClick={onClick && onClick}
     >
-      {leftIcon ? <div>{leftIcon}</div> : null}
+      {leftContent ? <div>{leftContent}</div> : null}
       {children}
-      {rightIcon ? <div>{rightIcon}</div> : null}
+      {rightContent ? <div>{rightContent}</div> : null}
     </div>
   );
 }

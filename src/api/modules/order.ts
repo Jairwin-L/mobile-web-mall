@@ -14,3 +14,14 @@ export async function queryList(params: IQueryOrder.Param): Promise<IBaseResp<IQ
     return {};
   }
 }
+export async function create(
+  params: IQueryOrder.CreateParam,
+): Promise<IBaseResp<IQueryOrder.Resp>> {
+  try {
+    const res = await request.post<IQueryOrder.Resp, IQueryOrder.CreateParam>(ORDER.CREATE, params);
+    return res;
+  } catch (error) {
+    console.log(`post:${ORDER.CREATE}----->：`, error);
+    return {};
+  }
+}
