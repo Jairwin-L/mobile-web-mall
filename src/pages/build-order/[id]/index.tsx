@@ -92,11 +92,7 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
         navbarTitle: '生成订单',
       }}
     >
-      <Panel
-        leftContent={<Icon type="address" />}
-        rightContent={<RightOutline />}
-        onClick={onOpenAddressPanel}
-      >
+      <Panel left={<Icon type="address" />} right={<RightOutline />} onClick={onOpenAddressPanel}>
         <div>
           {!addressExitFlag ? (
             <>
@@ -124,7 +120,7 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
           </div>
         </div>
       </Panel>
-      <Panel leftContent={<>备注</>}>
+      <Panel left={<>备注</>}>
         <Input placeholder="请输入备注" value={remark} clearable onChange={onRemarkChange} />
       </Panel>
       <ElePlaceholder
@@ -150,7 +146,7 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
           {addressDataSource?.map((item: IQueryAddress.ListItem) => {
             return (
               <Panel
-                rightContent={
+                right={
                   <>
                     {item.code?.join('') === selectedAddress?.code?.join('') ? (
                       <CheckOutline />

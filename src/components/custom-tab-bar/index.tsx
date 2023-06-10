@@ -1,4 +1,4 @@
-import { TAB_BARS } from '@/constants/router';
+import { TAB_BARS } from '@/constants';
 import { TabBar } from 'antd-mobile';
 import { useRouter } from 'next/router';
 import { ElePlaceholder } from '..';
@@ -13,14 +13,12 @@ export default function CustomTabBar(props: ICustomTabBar) {
     <>
       {children}
       {tabbarFlag ? (
-        <ElePlaceholder fixType="BOTTOM" placeholderClass="placeholder-class">
-          <div className={style['tab-bar-container']}>
-            <TabBar activeKey={asPath} onChange={(value) => push(value)}>
-              {TABS.map((item) => (
-                <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
-              ))}
-            </TabBar>
-          </div>
+        <ElePlaceholder placeholderClass="placeholder-class" className={style['custom-tab-bar']}>
+          <TabBar activeKey={asPath} onChange={(value) => push(value)}>
+            {TABS.map((item) => (
+              <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
+            ))}
+          </TabBar>
         </ElePlaceholder>
       ) : null}
     </>

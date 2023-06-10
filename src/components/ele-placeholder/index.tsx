@@ -1,24 +1,16 @@
-import { type ReactNode } from 'react';
 import style from './index.module.less';
+import clsx from 'clsx';
 
-export default function ElePlaceholder({
-  fixType = 'BOTTOM',
-  placeholderClass = '',
-  className = '',
-  children,
-}: {
-  fixType?: 'BOTTOM' | 'TOP';
-  placeholderClass?: string;
-  className?: string;
-  children: ReactNode;
-}) {
+export default function ElePlaceholder(props: IElePlaceholder) {
+  const { fixType = 'BOTTOM', placeholderClass = '', className = '', children } = props;
   return (
     <>
       <div className={placeholderClass} />
       <div
-        className={`${style['fix-box']} ${className} ${
-          fixType === 'BOTTOM' ? style['fix-type-bottom'] : style['fix-type-top']
-        }`}
+        className={clsx(style['placeholder-wrapper'], className, {
+          [style['fix-type-top']]: fixType === 'TOP',
+          [style['fix-type-bottom']]: fixType === 'BOTTOM',
+        })}
       >
         {children}
       </div>

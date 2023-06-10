@@ -5,10 +5,10 @@ declare namespace IQueryShop {
     title?: string;
     price?: number;
     buyCount?: number;
-    url?: string;
+    goodsPicUrl?: string;
     nextImage?: string;
     isSelected?: boolean;
-    count?: number;
+    amount?: number;
   }
   interface Param {
     id: number;

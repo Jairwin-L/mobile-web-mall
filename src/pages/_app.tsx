@@ -1,8 +1,9 @@
-import type { AppProps } from 'next/app';
-import { CustomTabBar } from '@/components';
-import style from './global.less';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import type { AppProps } from 'next/app';
+import { CustomTabBar } from '@/components';
+import { APP_NAME } from '@/constants';
+import style from './global.less';
 
 type IAppProps = AppProps & {
   router: any;
@@ -27,6 +28,7 @@ export default function App(props: IAppProps) {
         <meta name="Author" content="Jairwin" />
         <meta name="Keywords" content="mobile-web-mall" />
         <meta name="Description" content="mobile-web-mall" />
+        <title>{APP_NAME}</title>
       </Head>
       <CustomTabBar>
         <Component style={style} {...pageProps} />

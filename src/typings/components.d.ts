@@ -26,3 +26,10 @@ interface IPageData {
   dataSource: any;
   children: React.ReactNode;
 }
+
+interface IElePlaceholder {
+  fixType?: 'BOTTOM' | 'TOP';
+  placeholderClass?: string;
+  className?: string;
+  children: React.ReactNode;
+}

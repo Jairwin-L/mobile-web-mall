@@ -116,14 +116,14 @@ export default function Address(props: IBaseResp<IQueryAddress.Resp>) {
               );
             })}
           </ul>
+          <LoadMore
+            loadMore={dataSource?.length === meta?.totalCount}
+            hasMore={hasMore}
+            onLoadMore={onLoadMore}
+          />
         </div>
-        <LoadMore
-          loadMore={dataSource?.length === meta?.totalCount}
-          hasMore={hasMore}
-          onLoadMore={onLoadMore}
-        />
       </PageData>
-      <ElePlaceholder placeholderClass="placeholder-class">
+      <ElePlaceholder placeholderClass="placeholder-class" className={style['add-address-btn']}>
         <Button block color="primary" size="middle" onClick={() => push('./address/add')}>
           <Icon type="icon-create" className={style['icon-add']} />
           添加收货地址

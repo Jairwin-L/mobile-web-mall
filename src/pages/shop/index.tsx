@@ -25,6 +25,7 @@ export async function getServerSideProps() {
 
 export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
   const { data } = props;
+  console.log(`data----->：`, props);
   const swipeActionRef = useRef<SwipeActionRef>(null);
   const [allSelected, setAllSelected] = useState<any>(false);
   const [list, setList] = useState<IQueryShop.Resp>(data || []);
@@ -67,9 +68,9 @@ export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
   };
   // 单个商品价格计算，TODO:需要服务端支持
   const onCalculatePrice = (index: number, value: number) => {
-    list[index].count = value;
+    list[index].amount = value;
     const priceList = list.filter((item) => item.isSelected);
-    const total = priceList.reduce((acc: any, cur: any) => acc + cur.price * cur.count, 0);
+    const total = priceList.reduce((acc: any, cur: any) => acc + cur.price * cur.amount, 0);
     setTotalPrice(total);
     setList([...list]);
   };
@@ -86,7 +87,7 @@ export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
   // 计算已选商品价格，TODO:需要服务端支持
   const getSelectedShop = (selectedShopList: IQueryShop.List, originList: IQueryShop.List) => {
     const priceList = selectedShopList.filter((item: IQueryShop.ListItem) => item.isSelected);
-    const total = priceList.reduce((acc: any, cur: any) => acc + cur.price * cur.count, 0);
+    const total = priceList.reduce((acc: any, cur: any) => acc + cur.price * cur.amount, 0);
     setTotalPrice(total);
     setSelectedList(priceList);
     setList(originList);
@@ -131,7 +132,7 @@ export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
                       />
                       <div className={style['shop-img-container']}>
                         <Image
-                          src={item.url as string}
+                          src={item.goodsPicUrl as string}
                           alt={item.title as string}
                           width={60}
                           height={60}
@@ -142,7 +143,7 @@ export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
                         <div className={style['shop-money']}>
                           <span>¥{item.price ?? 0}</span>
                           <Stepper
-                            value={item.count}
+                            value={item.amount}
                             min={1}
                             max={100000}
                             onChange={(value: number) => onCalculatePrice(index, value)}
@@ -155,22 +156,20 @@ export default function Shop(props: IBaseResp<IQueryShop.Resp>) {
               })}
             </ul>
           </section>
-          <ElePlaceholder>
-            <section className={style['shop-footer']}>
-              <div className={style['shop-selected']} onClick={onSelectedAll}>
-                <Icon
-                  className={style['checkbox-icon']}
-                  type={allSelected ? 'selected' : 'unselected'}
-                />
-                <span>全选</span>
+          <ElePlaceholder className={style['shop-footer']}>
+            <div className={style['shop-selected']} onClick={onSelectedAll}>
+              <Icon
+                className={style['checkbox-icon']}
+                type={allSelected ? 'selected' : 'unselected'}
+              />
+              <span>全选</span>
+            </div>
+            <div className={style['footer-price']}>
+              <div className={style['total-price']}>合计：¥{totalPrice}</div>
+              <div className={style['calculate-btn']} onClick={onPayOrder}>
+                结算
               </div>
-              <div className={style['footer-price']}>
-                <div className={style['total-price']}>合计：¥{totalPrice}</div>
-                <div className={style['calculate-btn']} onClick={onPayOrder}>
-                  结算
-                </div>
-              </div>
-            </section>
+            </div>
           </ElePlaceholder>
         </PageData>
       </main>
