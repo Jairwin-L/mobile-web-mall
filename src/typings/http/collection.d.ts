@@ -11,6 +11,8 @@ declare namespace IQueryCollection {
   }
   interface Param {
     id?: number;
+    pageIndex?: number;
+    pageSize?: number;
   }
   type Resp = List;
 }

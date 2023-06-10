@@ -3,8 +3,10 @@ import { PageLayout } from '@/components';
 import FormConfig from './form-config';
 
 export async function getServerSideProps(context: IServerSideContext) {
+  const { query } = context;
+  const { id } = query || {};
   const resp = await show({
-    id: Number(context.query.id),
+    id: Number(id),
   });
   return {
     props: resp,
