@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { CustomTabBar } from '@/components';
 import style from './global.less';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 
 type IAppProps = AppProps & {
   router: any;
@@ -15,8 +16,21 @@ export default function App(props: IAppProps) {
   if (!mounted) return null;
   const { Component, pageProps } = props || {};
   return (
-    <CustomTabBar>
-      <Component style={style} {...pageProps} />
-    </CustomTabBar>
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"
+        />
+        <meta httpEquiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+        <meta name="renderer" content="webkit" />
+        <meta name="Author" content="Jairwin" />
+        <meta name="Keywords" content="mobile-web-mall" />
+        <meta name="Description" content="mobile-web-mall" />
+      </Head>
+      <CustomTabBar>
+        <Component style={style} {...pageProps} />
+      </CustomTabBar>
+    </>
   );
 }
