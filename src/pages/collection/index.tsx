@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Dialog, SwipeAction, SwipeActionRef, Toast } from 'antd-mobile';
-import { del, queryList } from '@/api/modules/collection';
 import { LoadMore, PageData, PageLayout } from '@/components';
 import { useFetchPageData } from '@/hooks';
+import { del, queryList } from '@/api/modules/collection';
 import style from './index.module.less';
 
 export async function getServerSideProps(context: IServerSideContext) {

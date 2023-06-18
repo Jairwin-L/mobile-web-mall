@@ -1,5 +1,4 @@
 export { default as AutoCenter } from './auto-center';
-export { default as CustomTabBar } from './custom-tab-bar';
 export { default as CoverImage } from './cover-image';
 export { default as ElePlaceholder } from './ele-placeholder';
 export { default as PageLayout } from './page-layout';

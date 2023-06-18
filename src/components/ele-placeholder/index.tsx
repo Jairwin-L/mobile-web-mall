@@ -1,5 +1,5 @@
-import style from './index.module.less';
 import clsx from 'clsx';
+import style from './index.module.less';
 
 export default function ElePlaceholder(props: IElePlaceholder) {
   const { fixType = 'BOTTOM', placeholderClass = '', className = '', children } = props;

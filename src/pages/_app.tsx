@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import { CustomTabBar } from '@/components';
 import { APP_NAME } from '@/constants';
 import style from './global.less';
 
@@ -30,9 +29,7 @@ export default function App(props: IAppProps) {
         <meta name="Description" content="mobile-web-mall" />
         <title>{APP_NAME}</title>
       </Head>
-      <CustomTabBar>
-        <Component style={style} {...pageProps} />
-      </CustomTabBar>
+      <Component style={style} {...pageProps} />
     </>
   );
 }

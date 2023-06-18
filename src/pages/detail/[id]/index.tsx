@@ -1,12 +1,12 @@
-import { CoverImage, ElePlaceholder, Icon, PageLayout } from '@/components';
-import style from './index.module.less';
-import { show } from '@/api/modules/shop';
 import { Popup, Selector, Stepper, Swiper, Toast } from 'antd-mobile';
-import { create } from '@/api/modules/collection';
 import { useRouter } from 'next/router';
 import { RightOutline } from 'antd-mobile-icons';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { CoverImage, ElePlaceholder, Icon, PageLayout } from '@/components';
+import { create } from '@/api/modules/collection';
+import { show } from '@/api/modules/shop';
+import style from './index.module.less';
 
 export async function getServerSideProps(context: IServerSideContext) {
   const { query } = context;

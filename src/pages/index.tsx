@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
 import { Swiper, Toast } from 'antd-mobile';
-import { queryList } from '@/api/modules/biz';
-import { Icon, LoadMore } from '@/components';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { Icon, LoadMore, PageLayout } from '@/components';
 import { useFetchPageData } from '@/hooks';
+import { queryList } from '@/api/modules/biz';
 import style from './index.module.less';
 
 export async function getServerSideProps(context: IServerSideContext) {
@@ -81,7 +81,7 @@ export default function Main(props: IBaseResp<IQueryBiz.Resp>) {
   const dataSource = [...leftDataSource, ...rightDataSource] || [];
 
   return (
-    <>
+    <PageLayout initData={props}>
       {banners.length > 0 ? (
         <Swiper className={style['swiper-wrap']}>
           {banners.map((item) => {
@@ -153,6 +153,6 @@ export default function Main(props: IBaseResp<IQueryBiz.Resp>) {
         hasMore={hasMore}
         onLoadMore={onLoadMore}
       />
-    </>
+    </PageLayout>
   );
 }

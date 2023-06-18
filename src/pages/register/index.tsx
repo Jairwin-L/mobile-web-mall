@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Form, Input, Button } from 'antd-mobile';
 import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
-import { PageLayout } from '@/components';
-import { register } from '@/api/modules/auth';
-import { phoneReg } from '@/utils';
 import { useRouter } from 'next/router';
+import { PageLayout } from '@/components';
+import { phoneReg } from '@/utils';
+import { register } from '@/api/modules/auth';
 import style from './index.module.less';
 
 export default function Register() {

@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { Button, Dialog, SwipeAction, Tag, Toast } from 'antd-mobile';
 import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
 import { ElePlaceholder, Icon, LoadMore, PageData, PageLayout } from '@/components';
-import { del, queryList } from '@/api/modules/address';
 import { useFetchPageData } from '@/hooks';
+import { del, queryList } from '@/api/modules/address';
 import style from './index.module.less';
 
 export async function getServerSideProps(context: IServerSideContext) {

@@ -4,12 +4,12 @@ import { Button, Input, Popup } from 'antd-mobile';
 import clsx from 'clsx';
 import { CheckOutline, CloseOutline, RightOutline } from 'antd-mobile-icons';
 import debounce from 'lodash.debounce';
+import { getCodeToText } from '@/utils';
 import { ElePlaceholder, Icon, PageLayout, Panel } from '@/components';
-import style from './index.module.less';
 import { show } from '@/api/modules/shop';
 import { queryList } from '@/api/modules/address';
-import { getCodeToText } from '@/utils';
 import { create } from '@/api/modules/order';
+import style from './index.module.less';
 
 export async function getServerSideProps(context: IServerSideContext) {
   const { query } = context;

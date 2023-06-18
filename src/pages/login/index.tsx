@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Form, Input, Button } from 'antd-mobile';
 import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
-import { PageLayout } from '@/components';
-import { login } from '@/api/modules/auth';
-import { phoneReg } from '@/utils';
-import style from './index.module.less';
 import { useRouter } from 'next/router';
+import { PageLayout } from '@/components';
+import { phoneReg } from '@/utils';
+import { login } from '@/api/modules/auth';
+import style from './index.module.less';
 
 export default function Login() {
   const { back } = useRouter();

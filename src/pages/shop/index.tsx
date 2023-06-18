@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import { PageLayout, ElePlaceholder, Icon, PageData } from '@/components';
 import { Dialog, SwipeAction, Stepper, Toast } from 'antd-mobile';
 import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
+import { PageLayout, ElePlaceholder, Icon, PageData } from '@/components';
 import { del, queryList } from '@/api/modules/shop';
 import style from './index.module.less';
 
