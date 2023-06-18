@@ -28,22 +28,22 @@ module.exports = {
           {
             pattern: '@/components/**',
             group: 'internal',
-            position: 'before',
+            position: 'after',
           },
           {
             pattern: '@/utils/**',
             group: 'internal',
-            position: 'before',
+            position: 'after',
           },
           {
             pattern: '@/hooks/**',
             group: 'internal',
-            position: 'before',
+            position: 'after',
           },
           {
             pattern: '@/api/**',
             group: 'internal',
-            position: 'before',
+            position: 'after',
           },
           {
             pattern: '@/constants/**',
