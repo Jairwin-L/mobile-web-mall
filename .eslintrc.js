@@ -50,6 +50,11 @@ module.exports = {
             group: 'internal',
             position: 'after',
           },
+          {
+            pattern: '@/typings/**',
+            group: 'internal',
+            position: 'after',
+          },
         ],
       },
     ],

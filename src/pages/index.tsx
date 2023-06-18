@@ -1,6 +1,6 @@
-import { Swiper, Toast } from 'antd-mobile';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { Swiper, Toast } from 'antd-mobile';
 import { Icon, LoadMore, PageLayout } from '@/components';
 import { useFetchPageData } from '@/hooks';
 import { queryList } from '@/api/modules/biz';
