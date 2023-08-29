@@ -34,7 +34,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/pages/category',
+        source: '/api/category',
         headers: [
           {
             key: 'Cache-Control',
