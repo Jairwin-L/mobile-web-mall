@@ -30,20 +30,6 @@ const nextConfig = {
   experimental: {
     forceSwcTransforms: true,
   },
-  // TODO:for test
-  async headers() {
-    return [
-      {
-        source: '/api/category',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'max-age=86400, stale-while-revalidate=86400',
-          },
-        ],
-      },
-    ];
-  },
   transpilePackages: ['antd-mobile'],
   images: {
     remotePatterns: REMOTE_PATTERNS,
