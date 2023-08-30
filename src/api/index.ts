@@ -3,7 +3,7 @@ import { Toast } from 'antd-mobile';
 import { SYSTEM_ERROR_MSG, SYSTEM_SUCCESS_MSG } from '@/constants/api';
 import { BASE_API_URL } from './config';
 
-fly.config.timeout = 3500;
+fly.config.timeout = 5000;
 fly.interceptors.request.use((request) => {
   request.headers = {
     'Content-Type': 'application/json',
