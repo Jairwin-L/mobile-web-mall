@@ -6,15 +6,14 @@ import { PageLayout } from '@/components';
 import { queryList } from '@/api/modules/category';
 import style from './index.module.less';
 
-export async function getStaticProps() {
-  // TODO:test
-  // const { res } = props;
-  // res.setHeader('Cache-Control', 'max-age=86400');
-  const resp = await queryList();
-  return {
-    props: resp,
-    revalidate: 86400,
-  };
+export async function getServerSideProps(props: any) {
+  const { res } = props;
+  res.setHeader('Cache-Control', 'max-age=86400, stale-while-revalidate=86400');
+  queryList().then((resp) => {
+    return {
+      props: resp,
+    };
+  });
 }
 
 export default function Category(props: IBaseResp<IQueryCategory.Resp>) {
