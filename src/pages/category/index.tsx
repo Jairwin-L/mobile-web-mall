@@ -6,7 +6,10 @@ import { PageLayout } from '@/components';
 import { queryList } from '@/api/modules/category';
 import style from './index.module.less';
 
-export async function getServerSideProps() {
+export async function getServerSideProps(props: any) {
+  // TODO:test
+  const { res } = props;
+  res.setHeader('Cache-Control', 'max-age=86400');
   const resp = await queryList();
   return {
     props: resp,
