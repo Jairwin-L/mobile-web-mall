@@ -8,7 +8,7 @@ import style from './index.module.less';
 
 export async function getServerSideProps(props: any) {
   const { res } = props;
-  res.setHeader('Cache-Control', 'max-age=86400, stale-while-revalidate');
+  res.setHeader('Cache-Control', 'max-age=60, stale-while-revalidate=60');
   const resp = await queryList();
   return {
     props: resp,
