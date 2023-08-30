@@ -26,7 +26,6 @@ const REMOTE_PATTERNS = [
 const nextConfig = {
   distDir: 'dist',
   reactStrictMode: true,
-  runtime: 'edge',
   // TODO:Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
   experimental: {
     forceSwcTransforms: true,
