@@ -1,6 +1,12 @@
-import getConfig from 'next/config';
+import { ApiUrl } from '@/constants';
 
-const { publicRuntimeConfig } = getConfig();
-const { API_URL } = publicRuntimeConfig;
+const env = process.env.NEXT_PUBLIC_API_ENV;
+let apiUrl = ApiUrl.PROD;
 
-export const BASE_API_URL = API_URL;
+if (env === 'DEV') {
+  apiUrl = ApiUrl.DEV;
+} else {
+  apiUrl = ApiUrl.PROD;
+}
+
+export const BASE_API_URL = apiUrl;

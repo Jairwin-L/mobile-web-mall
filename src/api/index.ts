@@ -1,10 +1,7 @@
 import fly from 'flyio';
 import { Toast } from 'antd-mobile';
-import getConfig from 'next/config';
 import { SYSTEM_ERROR_MSG, SYSTEM_SUCCESS_MSG } from '@/constants/api';
-
-const { publicRuntimeConfig } = getConfig();
-const { API_URL } = publicRuntimeConfig;
+import { BASE_API_URL } from './config';
 
 fly.config.timeout = 5000;
 fly.interceptors.request.use((request) => {
@@ -90,4 +87,4 @@ class Request {
   }
 }
 
-export default Request.getInstance(API_URL);
+export default Request.getInstance(BASE_API_URL);
