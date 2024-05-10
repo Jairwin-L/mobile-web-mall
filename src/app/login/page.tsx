@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Form, Input, Button } from 'antd-mobile';
@@ -26,9 +27,6 @@ export default function Login() {
   };
   return (
     <PageLayout
-      initData={{
-        success: true,
-      }}
       extraInfo={{
         navbarTitle: '登录',
       }}

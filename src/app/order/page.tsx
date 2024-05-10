@@ -8,7 +8,7 @@ import { queryList } from '@/api/modules/order';
 import { OrderItem, OrderEnum, OrderValue } from '@/typings/const';
 import style from './index.module.less';
 
-export const ORDER_OPTION: OrderItem[] = [
+const ORDER_OPTION: OrderItem[] = [
   {
     icon: 'all',
     label: '全部',
