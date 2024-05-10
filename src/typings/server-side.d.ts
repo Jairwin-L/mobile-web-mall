@@ -3,9 +3,9 @@ interface IServerSideProps<T> {
 }
 interface IServerSideContext {
   query?: NonNullable<
-    | CommonPage & {
-        id: number;
-      }
+    CommonPage & {
+      id: number;
+    }
   >;
   resolvedUrl?: string;
 }
