@@ -3,11 +3,13 @@ import { Toast } from 'antd-mobile';
 import { SYSTEM_ERROR_MSG, SYSTEM_SUCCESS_MSG } from '@/constants/api';
 import { BASE_API_URL } from './config';
 
-fly.config.timeout = 5000;
+fly.config.timeout = 3500;
 fly.interceptors.request.use((request) => {
   request.headers = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
+    // apifox mock token
+    apifoxToken: '6H5JfNP0QJaBsYAhFCKUv',
   };
   return request;
 });
@@ -15,22 +17,22 @@ fly.interceptors.request.use((request) => {
 fly.interceptors.response.use(
   (response) => {
     const { data, request } = response;
-    const result = data || {};
     const { method } = request || {};
     if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
-      if (!result?.success) {
-        Toast.show({
-          content: data.msg || SYSTEM_ERROR_MSG,
-          icon: 'fail',
-        });
-      } else {
+      if (data.success) {
         Toast.show({
           content: data.msg || SYSTEM_SUCCESS_MSG,
           icon: 'success',
         });
       }
+      if (!data?.success) {
+        Toast.show({
+          content: data.msg || SYSTEM_ERROR_MSG,
+          icon: 'fail',
+        });
+      }
     }
-    return result;
+    return data;
   },
   (error: any) => {
     console.error('[EXCEPTION/interceptors] response error:%j', error);

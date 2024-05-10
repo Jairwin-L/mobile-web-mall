@@ -5,11 +5,8 @@ interface IBaseResp<D> {
   success?: boolean;
   loading?: boolean;
 }
-interface CommonPage extends CommonRespPage {
-  totalCount?: number;
-}
-
-interface CommonRespPage {
+interface CommonPage {
   pageIndex: number;
-  pageSize: number;
+  pageSize?: number;
+  totalCount?: number;
 }

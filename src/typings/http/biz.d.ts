@@ -6,6 +6,14 @@ declare namespace IQueryBiz {
     price: number;
     goodsPicUrl: string;
   }
+  type Banner = Array<{
+    id: number;
+    imgUrl: string;
+  }>;
+  type CategoryNav = Array<{
+    icon: string;
+    label: string;
+  }>;
   type Param = Partial<{
     id?: number;
     title?: string;
@@ -22,14 +30,8 @@ declare namespace IQueryBiz {
     list: List;
     leftData: List;
     rightData: List;
-    banners: Array<{
-      id: number;
-      imgUrl: string;
-    }>;
-    categoryNav?: Array<{
-      icon: string;
-      label: string;
-    }>;
+    banners: Banner;
+    categoryNav?: CategoryNav;
     page: CommonPage;
   }
 }

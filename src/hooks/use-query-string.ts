@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 /**
  * @module useQueryString
@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
  */
 
 export default function useQueryString<T extends string>(key: T) {
+  // @ts-ignore
   const { query } = useRouter();
-  return query[key];
+  return query?.[key];
 }

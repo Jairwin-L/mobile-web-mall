@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 import { Button, ErrorBlock, NavBar, Popover, TabBar } from 'antd-mobile';
 import { Action } from 'antd-mobile/es/components/popover';
 import { LoopOutline } from 'antd-mobile-icons';
@@ -17,15 +16,17 @@ const actions: Action[] = [
 ];
 
 export default function PageLayout(props: IPageLayout) {
-  const { children, initData, extraInfo } = props || {};
-  const { msg = '', success = false } = initData || {};
+  const { children, errorMsg, extraInfo, loading, isSuccess = true } = props || {};
   const { navbarTitle } = extraInfo || {};
-  const { reload, isReady, back, push, asPath } = useRouter();
-  const [loading, setLoading] = useState(true);
-  const tabbarFlag = TAB_BARS.includes(asPath);
+  const pathname = usePathname();
+  const { back, push, refresh } = useRouter();
+  const tabbarFlag = TAB_BARS.includes(pathname);
   // TODO:need to want to think about it
-  // const currentPath = `/${asPath.split('/').filter(Boolean)[0]}`;
-  const minePath = asPath === '/mine';
+  // const currentPath = `/${pathname.split('/').filter(Boolean)[0]}`;
+  const minePath = pathname === '/mine';
+  const onRefresh = () => {
+    refresh();
+  };
 
   const TopNavBar = () => {
     return (
@@ -57,7 +58,7 @@ export default function PageLayout(props: IPageLayout) {
       <>
         {tabbarFlag ? (
           <ElePlaceholder placeholderClass="placeholder-class" className={style['custom-tab-bar']}>
-            <TabBar activeKey={asPath} onChange={(value) => push(value)}>
+            <TabBar activeKey={pathname} onChange={(value) => push(value)}>
               {TABS.map((item) => (
                 <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
               ))}
@@ -67,24 +68,19 @@ export default function PageLayout(props: IPageLayout) {
       </>
     );
   };
-  useEffect(() => {
-    if (isReady) {
-      setLoading(false);
-    }
-  }, [isReady]);
   return (
     <>
       <TopNavBar />
       {loading ? <Loading /> : null}
-      {!loading && !success && !minePath ? (
-        <ErrorBlock fullPage description={<>{msg || SYSTEM_ERROR_MSG}</>}>
-          <Button color="danger" onClick={() => reload()}>
+      {!loading && !isSuccess && !minePath ? (
+        <ErrorBlock fullPage description={<>{errorMsg || SYSTEM_ERROR_MSG}</>}>
+          <Button color="danger" onClick={onRefresh}>
             <LoopOutline />
             重试
           </Button>
         </ErrorBlock>
       ) : null}
-      {(success && !loading) || minePath ? children : null}
+      {(isSuccess && !loading) || minePath ? children : null}
       <CustomTabbar />
     </>
   );

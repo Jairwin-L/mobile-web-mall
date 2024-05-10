@@ -1,0 +1,13 @@
+.wrap-container {
+  margin-top: 80px;
+  margin-bottom: 30px;
+  min-height: 100vh;
+  :global {
+    .ant-result .ant-result-title {
+      color: $color-white;
+    }
+    .ant-result .ant-result-subtitle {
+      color: $color-white;
+    }
+  }
+}

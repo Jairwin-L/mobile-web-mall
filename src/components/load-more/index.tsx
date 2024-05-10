@@ -1,19 +1,25 @@
-import { Button, DotLoading } from 'antd-mobile';
+import { DotLoading } from 'antd-mobile';
+import clsx from 'clsx';
 import style from './index.module.less';
 
 export default function LoadMore(props: ILoadMore) {
-  const { hasMore, onLoadMore, loadMore = false } = props;
+  const { loading, onLoadMore, loadMore = false } = props;
+  const hasMoreNode = loading ? <DotLoading /> : '加载更多';
+  const onLoad = () => {
+    if (!loadMore && !loading && onLoadMore) {
+      onLoadMore();
+    }
+  };
   return (
     <>
-      {loadMore ? (
-        <div className={style['no-data']}>
-          <span>没有更多数据了</span>
-        </div>
-      ) : (
-        <Button block fill="none" onClick={onLoadMore}>
-          {hasMore ? <span className={style['load-more-text']}>加载更多</span> : <DotLoading />}
-        </Button>
-      )}
+      <div
+        className={clsx(style['load-more-container'], {
+          [style['no-data']]: loadMore,
+        })}
+        onClick={onLoad}
+      >
+        {loadMore ? '没有更多数据了' : hasMoreNode}
+      </div>
     </>
   );
 }

@@ -1,0 +1,143 @@
+$main-font: thicccboi, sans-serif;
+$gutter-width: 32px;
+$app-header-height: 80px;
+
+// Colors
+$color-theme-green: #14f195;
+$color-white: #fff;
+$color-hero-subheading: #b7b4c7;
+// Functions
+@function rhythm($n) {
+  @return 6px * $n;
+}
+
+// Functions
+@function rhythm8($n) {
+  @return 8px * $n;
+}
+
+@function calc-columns($n) {
+  @return $gutter-width * ($n - 1) + 77px * $n;
+}
+
+// Mixin
+@mixin gradient-text {
+  // background: linear-gradient(145deg, #fa5c7f, #98a0ff, #5ef0d9);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Responsive layout ref to antd grid design
+// https://ant.design/components/grid/#Col
+
+$grid-width-xs: 575px;
+$grid-width-sm: 576px;
+$grid-width-md: 768px;
+$grid-width-lg: 992px;
+$grid-width-xl: 1200px;
+$grid-width-xxl: 1600px;
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == 'xxl' {
+    @media only screen and (min-width: $grid-width-xxl) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media only screen and (min-width: $grid-width-xl) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media only screen and (min-width: $grid-width-lg) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media only screen and (min-width: $grid-width-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'sm' {
+    @media only screen and (min-width: $grid-width-sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'xs' {
+    @media only screen and (max-width: $grid-width-xs) {
+      @content;
+    }
+  }
+}
+
+$color-photo-indigo: #6610f2;
+$color-photo-purple: #5733f5;
+$color-photo-purple-light: #6847f6;
+$color-photo-pink: #d63384;
+$color-photo-red: #ff3500;
+$color-photo-orange: #fd7e14;
+$color-photo-yellow: #ffc107;
+$color-photo-green: #1cf463;
+$color-photo-teal: #20c997;
+$color-photo-cyan: #0dcaf0;
+$color-photo-white: $color-white;
+$color-photo-gray-100: #f8f9fa;
+$color-photo-gray-200: #e9ecef;
+$color-photo-gray-300: #dee2e6;
+$color-photo-gray-400: #ced4da;
+$color-photo-gray-500: #b5b5b8;
+$color-photo-gray-600: #2f3437;
+$color-photo-gray-700: #272932;
+$color-photo-gray-800: #1f2028;
+$color-photo-gray-900: #1c1d23;
+$color-photo-primary: #5733f5;
+$color-photo-secondary: #6c757d;
+$color-photo-success: #1cf463;
+$color-photo-info: #0dcaf0;
+$color-photo-warning: #ffc107;
+$color-photo-danger: #ff3500;
+$color-photo-light: #f8f9fa;
+$color-photo-gray-light: #b5b5b8;
+$color-photo-gray: #6c757d;
+$color-photo-dark: #1c1d23;
+$color-photo-rare: #fd9a13;
+$color-photo-epic: #ff28db;
+$color-photo-legendary: #b356ff;
+
+$color-separator: $color-photo-gray;
+
+$default-black: #000;
+$color-dark-bg-card: $color-photo-gray-900;
+$color-dark-bg-card-hover: $color-photo-gray-700;
+$color-dark-bg-card-label: $color-photo-gray-600;
+$color-dark-bg-input: $color-photo-gray-700;
+$color-dark-bg-darkest: #121212;
+// $color-dark-bg-input: $color-photo-gray-700;
+
+$nba-colors-black-100: #808396;
+$nba-colors-black-200: #6b6b7e;
+$nba-colors-black-300: #5b5e6c;
+$nba-colors-black-400: #4b4d59;
+$nba-colors-black-500: #393b45;
+$nba-colors-black-600: #2b2c33;
+$nba-colors-black-700: #212127;
+$nba-colors-black-800: #17171b;
+$nba-colors-black-900: #0d0d0f;
+$nba-colors-white-200: $color-white;
+$nba-colors-whiteAlpha-50: rgba(255, 255, 255, 0.04);
+$nba-colors-whiteAlpha-100: rgba(255, 255, 255, 0.06);
+$nba-colors-whiteAlpha-200: rgba(255, 255, 255, 0.08);
+$nba-colors-whiteAlpha-300: rgba(255, 255, 255, 0.16);
+$nba-colors-whiteAlpha-400: rgba(255, 255, 255, 0.24);
+$nba-colors-whiteAlpha-500: rgba(255, 255, 255, 0.36);
+$nba-colors-whiteAlpha-600: rgba(255, 255, 255, 0.48);
+$nba-colors-whiteAlpha-700: rgba(255, 255, 255, 0.64);
+$nba-colors-whiteAlpha-800: rgba(255, 255, 255, 0.8);
+$nba-colors-whiteAlpha-900: rgba(255, 255, 255, 0.92);
+$nba-colors-blackAlpha-50: rgba(0, 0, 0, 0.04);
+$nba-colors-blackAlpha-100: rgba(0, 0, 0, 0.06);
+$nba-colors-blackAlpha-200: rgba(0, 0, 0, 0.08);
+$nba-colors-blackAlpha-300: rgba(0, 0, 0, 0.16);
+$nba-colors-blackAlpha-400: rgba(0, 0, 0, 0.24);
+$nba-colors-blackAlpha-500: rgba(0, 0, 0, 0.36);
+$nba-colors-blackAlpha-600: rgba(0, 0, 0, 0.48);
+$nba-colors-blackAlpha-700: rgba(0, 0, 0, 0.64);
+$nba-colors-blackAlpha-800: rgba(0, 0, 0, 0.8);
+$nba-colors-blackAlpha-900: rgba(0, 0, 0, 0.92);
+$colors-modalBorder: rgba(255, 255, 255, 0.08);
+$colors-background-theme: #1a1b1f;

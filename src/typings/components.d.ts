@@ -3,17 +3,21 @@ interface ICustomTabBar {
 }
 interface IPageLayout {
   children: React.ReactNode;
-  initData?: {
-    success?: boolean;
-    msg?: string;
-    data?: any;
-  };
+  // initData?: {
+  //   success?: boolean;
+  //   loading?: boolean;
+  //   msg?: string;
+  //   data?: any;
+  // };
+  loading?: boolean;
+  isSuccess?: boolean;
+  errorMsg?: string;
   extraInfo?: {
     navbarTitle?: string;
   };
 }
 interface ILoadMore {
-  hasMore?: boolean;
+  loading?: boolean;
   loadMore?: boolean;
   onLoadMore?: () => void;
 }

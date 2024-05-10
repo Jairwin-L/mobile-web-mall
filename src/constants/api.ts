@@ -1,6 +1,6 @@
 enum ApiUrl {
-  DEV = 'https://www.fastmock.site/mock/f8b66bcca16aa287ef3de643cc4cc803/api',
-  PROD = 'https://www.fastmock.site/mock/f8b66bcca16aa287ef3de643cc4cc803/api',
+  DEV = 'https://mock.apifox.com/m1/4019938-3656481-default',
+  PROD = 'https://mock.apifox.com/m1/4019938-3656481-default',
 }
 
 const SYSTEM_SUCCESS_MSG = '操作成功';

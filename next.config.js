@@ -1,7 +1,6 @@
+const path = require('path');
 // use less: https://github.com/SolidZORO/next-plugin-antd-less
 const withAntdLess = require('next-plugin-antd-less');
-
-const DEV_URL = 'https://www.fastmock.site/mock/f8b66bcca16aa287ef3de643cc4cc803/api';
 
 const REMOTE_PATTERNS = [
   {
@@ -36,9 +35,10 @@ const nextConfig = {
   images: {
     remotePatterns: REMOTE_PATTERNS,
   },
-  publicRuntimeConfig: {
-    // Will be available on both server and client
-    API_URL: DEV_URL,
+  sassOptions: {
+    fiber: false,
+    includePaths: [path.join(__dirname, 'styles')],
+    additionalData: `@import "src/styles/common.scss";@import "src/styles/mixins.scss";`,
   },
   ...withAntdLess({
     modifyVars: {
