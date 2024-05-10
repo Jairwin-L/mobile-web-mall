@@ -12,10 +12,12 @@ import { getCodeToText } from '@/utils';
 import { create } from '@/api/modules/order';
 import style from './index.module.less';
 
-export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
-  const { buildOrderData = {}, addressData = {} } = props;
+export default function BuildOrder() {
+  // const { buildOrderData = {}, addressData = {} } = props;
+  const addressData: any = {};
+  const buildOrderData: any = {};
   const { push, replace } = useRouter();
-  const addressDataSource = addressData.data || [];
+  const addressDataSource = addressData?.data || [];
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [remark, setRemark] = useState('');
@@ -28,7 +30,7 @@ export default function BuildOrder(props: IQueryShop.BuildOrderResp) {
     id,
     goodsPicUrl,
     // sku = {},
-  } = buildOrderData.data || {};
+  } = buildOrderData?.data || {};
   const onSubmitOrder = async () => {
     setLoading(true);
     try {
