@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { Swiper } from 'antd-mobile';
-import { Icon, LoadMore, PageLayout } from '@/components';
 import { queryList, queryRecommend } from '@/api/modules/biz';
+import { Icon, LoadMore, PageLayout } from '@/components';
+import { Swiper } from 'antd-mobile';
+import { useEffect, useState } from 'react';
 import style from './page.module.less';
 
 export default function Main() {

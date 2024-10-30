@@ -1,6 +1,7 @@
-import { type ReactNode } from 'react';
-import { Metadata } from 'next';
 import Wrapper from '@/components/wrapper';
+import 'antd-mobile/es/global';
+import { Metadata } from 'next';
+import { type ReactNode } from 'react';
 import '../styles/globals.scss';
 
 export async function generateMetadata(): Promise<Metadata> {

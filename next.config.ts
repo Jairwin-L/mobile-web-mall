@@ -1,38 +1,34 @@
-const path = require('path');
+import path from 'path';
 // use less: https://github.com/SolidZORO/next-plugin-antd-less
-const withAntdLess = require('next-plugin-antd-less');
+import withAntdLess from 'next-plugin-antd-less';
 
-const REMOTE_PATTERNS = [
-  {
-    protocol: 'https',
-    hostname: 'gw.alicdn.com',
-    port: '',
-    pathname: '/**',
-  },
-  {
-    protocol: 'https',
-    hostname: 'yanxuan.nosdn.127.net',
-    port: '',
-    pathname: '/**',
-  },
-  {
-    protocol: 'https',
-    hostname: 'yanxuan-item.nosdn.127.net',
-    port: '',
-    pathname: '/**',
-  },
-];
-
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: 'dist',
   reactStrictMode: true,
   transpilePackages: ['antd-mobile'],
   images: {
-    remotePatterns: REMOTE_PATTERNS,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'gw.alicdn.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'yanxuan.nosdn.127.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'yanxuan-item.nosdn.127.net',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   sassOptions: {
-    fiber: false,
     includePaths: [path.join(__dirname, 'styles')],
     additionalData: `@import "src/styles/common.scss";@import "src/styles/mixins.scss";`,
   },
