@@ -1,11 +1,9 @@
 import path from 'path';
 // use less: https://github.com/SolidZORO/next-plugin-antd-less
-import withAntdLess from 'next-plugin-antd-less';
 
 const nextConfig = {
   distDir: 'dist',
   reactStrictMode: true,
-  transpilePackages: ['antd-mobile'],
   images: {
     remotePatterns: [
       {
@@ -30,27 +28,8 @@ const nextConfig = {
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
-    additionalData: `@import "src/styles/common.scss";@import "src/styles/mixins.scss";`,
+    additionalData: `@import "src/styles/common.scss";@import "src/styles/mixins.scss";;@import "src/styles/variable.scss";`,
   },
-  ...withAntdLess({
-    modifyVars: {
-      '@primary': '#1677ff',
-      '@detail': '#2db7f5',
-      '@edit': '#8354ee',
-      '@danger': '#ff3141',
-      '@white': '#fff',
-      '@default-black': '#333',
-      '@pink': '#ffc0cb',
-      '@divide': '#f1f5ff',
-      '@text': '#999',
-      '@theme': '#1677ff',
-      '@warn': '#ff3141',
-      '@gray': '#7a7a7a',
-      '@default-font-size': '16px',
-      '@common-font-size': '14px',
-      '@small-font-size': '12px',
-    },
-  }),
 };
 
 module.exports = nextConfig;

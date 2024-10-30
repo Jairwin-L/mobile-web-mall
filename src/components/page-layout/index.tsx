@@ -1,12 +1,12 @@
-import { usePathname, useRouter } from 'next/navigation';
-import { Button, ErrorBlock, NavBar, Popover, TabBar } from 'antd-mobile';
-import { Action } from 'antd-mobile/es/components/popover';
-import { LoopOutline } from 'antd-mobile-icons';
 import { SYSTEM_ERROR_MSG, TABS, TAB_BARS } from '@/constants';
-import Loading from '../loading';
-import Icon from '../icon';
+import { Button, ErrorBlock, NavBar, Popover, TabBar } from 'antd-mobile';
+import { LoopOutline } from 'antd-mobile-icons';
+import { Action } from 'antd-mobile/es/components/popover';
+import { usePathname, useRouter } from 'next/navigation';
 import ElePlaceholder from '../ele-placeholder';
-import style from './index.module.less';
+import Icon from '../icon';
+import Loading from '../loading';
+import style from './index.module.scss';
 
 const actions: Action[] = [
   { key: '/', text: '首页' },

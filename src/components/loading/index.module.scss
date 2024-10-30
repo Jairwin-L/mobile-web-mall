@@ -16,7 +16,7 @@
       width: 6px;
       height: 10px;
       margin-right: 6px;
-      background: @primary;
+      background: $primary;
       transform: skewX(-15deg) scale(0);
       animation: LoadingScaleColorBoth 0.766s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
     }

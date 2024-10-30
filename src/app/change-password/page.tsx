@@ -1,12 +1,12 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Form, Input, Button } from 'antd-mobile';
-import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
-import { phoneReg } from '@/utils';
-import { PageLayout } from '@/components';
 import { change } from '@/api/modules/auth';
-import style from './index.module.less';
+import { PageLayout } from '@/components';
+import { phoneReg } from '@/utils';
+import { Button, Form, Input } from 'antd-mobile';
+import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import style from './page.module.scss';
 
 export default function ChangePassword() {
   const { back } = useRouter();

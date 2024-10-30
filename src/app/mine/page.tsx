@@ -1,10 +1,10 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import { List } from 'antd-mobile';
-import { RightOutlined } from '@ant-design/icons';
-import { PageLayout, Icon } from '@/components';
+import { Icon, PageLayout } from '@/components';
 import { ORDER_OPTION, SIMPLE_LINE } from '@/constants';
-import style from './index.module.less';
+import { RightOutlined } from '@ant-design/icons';
+import { List } from 'antd-mobile';
+import { useRouter } from 'next/navigation';
+import style from './page.module.scss';
 
 export default function Mine() {
   const { push } = useRouter();

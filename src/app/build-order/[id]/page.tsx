@@ -1,16 +1,16 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Button, Input, Popup } from 'antd-mobile';
-import clsx from 'clsx';
-import { CheckOutline, CloseOutline, RightOutline } from 'antd-mobile-icons';
-import debounce from 'lodash.debounce';
 import { ElePlaceholder, Icon, PageLayout, Panel } from '@/components';
 import { getCodeToText } from '@/utils';
+import { Button, Input, Popup } from 'antd-mobile';
+import { CheckOutline, CloseOutline, RightOutline } from 'antd-mobile-icons';
+import clsx from 'clsx';
+import debounce from 'lodash.debounce';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 // import { show } from '@/api/modules/shop';
 // import { queryList } from '@/api/modules/address';
 import { create } from '@/api/modules/order';
-import style from './index.module.less';
+import style from './page.module.scss';
 
 export default function BuildOrder() {
   // const { buildOrderData = {}, addressData = {} } = props;

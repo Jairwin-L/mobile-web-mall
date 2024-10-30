@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import style from './index.module.less';
+import style from './index.module.scss';
 
 interface ICoverImage {
   src: string;

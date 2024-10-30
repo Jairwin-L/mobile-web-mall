@@ -1,9 +1,9 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
-import { Dialog, SwipeAction, SwipeActionRef } from 'antd-mobile';
-import { LoadMore, PageData, PageLayout } from '@/components';
 import { del, queryList } from '@/api/modules/collection';
-import style from './index.module.less';
+import { LoadMore, PageData, PageLayout } from '@/components';
+import { Dialog, SwipeAction, SwipeActionRef } from 'antd-mobile';
+import { useEffect, useRef, useState } from 'react';
+import style from './page.module.scss';
 
 export default function Collection() {
   const [dataSource, setDataSource] = useState([]);

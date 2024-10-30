@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { create } from '@/api/modules/collection';
+import { CoverImage, ElePlaceholder, Icon, PageLayout } from '@/components';
 import { Popup, Selector, Stepper, Swiper, Toast } from 'antd-mobile';
 import { RightOutline } from 'antd-mobile-icons';
 import clsx from 'clsx';
-import { CoverImage, ElePlaceholder, Icon, PageLayout } from '@/components';
-import { create } from '@/api/modules/collection';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
 // import { show } from '@/api/modules/shop';
-import style from './index.module.less';
+import style from './page.module.scss';
 
 export default function Detail(props: IBaseResp<IQueryShop.DetailResp>) {
   const { data } = props;

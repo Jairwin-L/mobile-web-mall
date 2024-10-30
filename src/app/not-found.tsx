@@ -1,8 +1,6 @@
-import css from './page.module.less';
-
 export default function NotFound() {
   return (
-    <div className={css['not-found-container']}>
+    <div>
       NotFound
       {/* <Result
         status="404"

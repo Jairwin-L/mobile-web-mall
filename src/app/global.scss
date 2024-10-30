@@ -11,8 +11,8 @@ body {
   min-width: 320px;
   max-width: 640px;
   margin: 0 auto;
-  color: @default-black;
-  font-size: @common-font-size;
+  color: $default-black;
+  font-size: $common-font-size;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -28,7 +28,7 @@ body {
   text-size-adjust: 100% !important;
 }
 a {
-  color: @default-black;
+  color: $default-black;
   text-decoration: none;
 }
 img {
@@ -43,8 +43,8 @@ li {
   height: 50px;
 }
 .not-found-btn {
-  background: @primary;
-  color: @white;
+  background: $primary;
+  color: $white;
   padding: 10px 12px;
   border-radius: 4px;
   font-size: 17px;

@@ -1,12 +1,12 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Form, Input, Button } from 'antd-mobile';
-import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
+import { register } from '@/api/modules/auth';
 import { PageLayout } from '@/components';
 import { phoneReg } from '@/utils';
-import { register } from '@/api/modules/auth';
-import style from './index.module.less';
+import { Button, Form, Input } from 'antd-mobile';
+import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import style from './page.module.scss';
 
 export default function Register() {
   const { back } = useRouter();

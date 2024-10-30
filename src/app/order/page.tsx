@@ -6,7 +6,7 @@ import { getQueryParams } from '@/utils';
 import { Tabs } from 'antd-mobile';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import style from './index.module.less';
+import style from './page.module.scss';
 
 const ORDER_OPTION: OrderItem[] = [
   {

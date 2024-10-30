@@ -9,7 +9,7 @@
   width: 95%;
   padding: 10px;
   border-radius: 8px;
-  background: @white;
+  background: $white;
   margin: 10px auto;
   .shop-title {
     overflow: hidden;
@@ -30,7 +30,7 @@
   width: 95%;
   padding: 10px;
   border-radius: 8px;
-  background: @white;
+  background: $white;
   margin: 10px auto;
   display: flex;
   justify-content: space-between;
@@ -90,7 +90,7 @@
   display: flex;
   .bar-btn {
     padding: 8px 0;
-    color: @white;
+    color: $white;
     flex: 1;
     text-align: center;
   }

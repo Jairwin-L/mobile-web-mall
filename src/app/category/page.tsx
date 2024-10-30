@@ -1,11 +1,11 @@
 'use client';
-import { Fragment, useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import { queryList } from '@/api/modules/category';
+import { PageLayout } from '@/components';
 import { SideBar } from 'antd-mobile';
 import throttle from 'lodash.throttle';
-import { PageLayout } from '@/components';
-import { queryList } from '@/api/modules/category';
-import style from './index.module.less';
+import Image from 'next/image';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import style from './page.module.scss';
 
 export default function Category() {
   const sideBarRef = useRef<HTMLDivElement>(null);

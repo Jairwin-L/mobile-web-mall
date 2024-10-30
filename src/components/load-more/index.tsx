@@ -1,6 +1,6 @@
 import { DotLoading } from 'antd-mobile';
 import clsx from 'clsx';
-import style from './index.module.less';
+import style from './index.module.scss';
 
 export default function LoadMore(props: ILoadMore) {
   const { loading, onLoadMore, loadMore = false } = props;

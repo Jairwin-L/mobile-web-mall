@@ -1,6 +1,6 @@
-import { type ReactNode } from 'react';
 import clsx from 'clsx';
-import style from './index.module.less';
+import { type ReactNode } from 'react';
+import style from './index.module.scss';
 
 export default function Panel({
   left,

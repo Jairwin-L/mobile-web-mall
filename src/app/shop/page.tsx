@@ -1,11 +1,11 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import { Dialog, SwipeAction, Stepper, Toast } from 'antd-mobile';
-import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
-import { PageLayout, ElePlaceholder, Icon, PageData } from '@/components';
 import { del, queryList } from '@/api/modules/shop';
-import style from './index.module.less';
+import { ElePlaceholder, Icon, PageData, PageLayout } from '@/components';
+import { Dialog, Stepper, SwipeAction, Toast } from 'antd-mobile';
+import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+import style from './page.module.scss';
 
 export default function Shop() {
   const swipeActionRef = useRef<SwipeActionRef>(null);

@@ -32,7 +32,7 @@
   width: 95%;
   margin: 0 auto;
   margin-bottom: 10px;
-  background: @white;
+  background: $white;
   border-radius: 10px;
   &:last-child {
     margin-bottom: 0;
@@ -48,7 +48,7 @@
     color: #a4a4a4;
     border-bottom: 1px solid #f0eff0;
     .order-text {
-      color: @default-black;
+      color: $default-black;
     }
     .order-margin {
       margin-right: 5px;
@@ -65,13 +65,13 @@
         justify-content: center;
         align-items: center;
         height: 60px;
-        color: @default-black;
+        color: $default-black;
         .order-icon {
           margin-bottom: 5px;
           font-size: 20px;
         }
         .order-status {
-          color: @gray;
+          color: $gray;
           text-align: center;
         }
       }

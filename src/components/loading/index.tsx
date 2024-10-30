@@ -1,4 +1,4 @@
-import style from './index.module.less';
+import style from './index.module.scss';
 
 export default function Loading(props: ILoading) {
   const { text = '加载中...' } = props;

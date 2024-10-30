@@ -1,11 +1,11 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { del, queryList } from '@/api/modules/address';
+import { ElePlaceholder, Icon, LoadMore, PageData, PageLayout } from '@/components';
 import { Button, Dialog, SwipeAction, Tag } from 'antd-mobile';
 import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
-import { ElePlaceholder, Icon, LoadMore, PageData, PageLayout } from '@/components';
-import { del, queryList } from '@/api/modules/address';
-import style from './index.module.less';
+import { useRouter } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import style from './page.module.scss';
 
 export default function Address() {
   const { push } = useRouter();

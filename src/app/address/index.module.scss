@@ -8,7 +8,7 @@
     li {
       margin-bottom: 10px;
       padding: 8px;
-      background: @white;
+      background: $white;
       border-radius: 10px;
       &:last-child {
         margin-bottom: 0;
@@ -20,15 +20,15 @@
         font-size: 16px;
         span {
           margin-left: 5px;
-          color: @primary;
+          color: $primary;
           font-weight: normal;
           font-size: 12px;
         }
         .address-mark {
           padding: 0 3px;
-          color: @primary;
+          color: $primary;
           font-size: 10px;
-          border: 1px solid @primary;
+          border: 1px solid $primary;
           border-radius: 4px;
         }
       }
@@ -53,8 +53,8 @@
   align-items: center;
   justify-content: center;
   height: 35px;
-  color: @pink;
-  background: @white;
+  color: $pink;
+  background: $white;
   .icon-add {
     margin-right: 5px;
   }
