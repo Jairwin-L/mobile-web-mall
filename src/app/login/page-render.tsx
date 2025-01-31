@@ -1,5 +1,5 @@
 'use client';
-import { register } from '@/api/modules/auth';
+import { login } from '@/api/modules/auth';
 import { PageLayout } from '@/components';
 import { phoneReg } from '@/utils';
 import { Button, Form, Input } from 'antd-mobile';
@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import style from './page.module.scss';
 
-export default function Register() {
+export default function PageRender() {
   const { back } = useRouter();
   const [form] = Form.useForm();
   const [visible, setVisible] = useState(false);
@@ -16,7 +16,7 @@ export default function Register() {
   const onFinish = async (values: any) => {
     setLoading(true);
     try {
-      const { success = false } = await register(values);
+      const { success = false } = await login(values);
       setLoading(false);
       if (!success) return;
       back();
@@ -28,7 +28,7 @@ export default function Register() {
   return (
     <PageLayout
       extraInfo={{
-        navbarTitle: '注册',
+        navbarTitle: '登录',
       }}
     >
       <Form mode="card" name="form" layout="horizontal" onFinish={onFinish} form={form}>

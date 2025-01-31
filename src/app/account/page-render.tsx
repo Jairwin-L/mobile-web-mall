@@ -6,7 +6,7 @@ import { List } from 'antd-mobile';
 import { useRouter } from 'next/navigation';
 import style from './page.module.scss';
 
-export default function Mine() {
+export default function PageRender() {
   const { push } = useRouter();
   const onGoNav = (item: any) => {
     push(item.path);

@@ -17,7 +17,7 @@ export const TABS = [
     icon: <ShopbagOutline />,
   },
   {
-    key: '/mine',
+    key: '/account',
     title: '我的',
     icon: <UserOutline />,
   },

@@ -1,6 +1,6 @@
-import PageRender from './_main/page';
+import PageRender from './_main/page-render';
 
-export default function App() {
+export default function Page() {
   return (
     <>
       <PageRender />

@@ -1,15 +1,9 @@
-'use client';
-import { PageLayout } from '@/components';
-import FormConfig from '../form-config';
+import PageRender from './page-render';
 
-export default function Add() {
+export default function Page() {
   return (
-    <PageLayout
-      extraInfo={{
-        navbarTitle: '新增地址',
-      }}
-    >
-      <FormConfig />
-    </PageLayout>
+    <>
+      <PageRender />
+    </>
   );
 }

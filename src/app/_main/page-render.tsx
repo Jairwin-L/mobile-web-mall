@@ -73,9 +73,6 @@ export default function PageRender() {
           rightData.push(item);
         }
       });
-      // const half = Math.ceil(dataSource.length / 2);
-      // const leftData = dataSource.splice(0, half);
-      // const rightData = dataSource.splice(-half);
       setLeftDataSource(leftDataSource.concat(leftData));
       setRightDataSource(rightDataSource.concat(rightData));
       // @ts-ignore

@@ -1,5 +1,9 @@
-import path from 'path';
-// use less: https://github.com/SolidZORO/next-plugin-antd-less
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+// 从 import.meta.url 获取当前模块文件的路径
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const nextConfig = {
   distDir: 'dist',
@@ -28,8 +32,8 @@ const nextConfig = {
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
-    additionalData: `@import "src/styles/common.scss";@import "src/styles/mixins.scss";;@import "src/styles/variable.scss";`,
+    additionalData: `@import "src/styles/common.scss";@import "src/styles/mixins.scss";@import "src/styles/variable.scss";`,
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

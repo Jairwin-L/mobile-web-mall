@@ -23,7 +23,7 @@ export default function PageLayout(props: IPageLayout) {
   const tabbarFlag = TAB_BARS.includes(pathname);
   // TODO:need to want to think about it
   // const currentPath = `/${pathname.split('/').filter(Boolean)[0]}`;
-  const minePath = pathname === '/mine';
+  const accountPath = pathname === '/account';
   const onRefresh = () => {
     refresh();
   };
@@ -72,7 +72,7 @@ export default function PageLayout(props: IPageLayout) {
     <>
       <TopNavBar />
       {loading ? <Loading /> : null}
-      {!loading && !isSuccess && !minePath ? (
+      {!loading && !isSuccess && !accountPath ? (
         <ErrorBlock fullPage description={<>{errorMsg || SYSTEM_ERROR_MSG}</>}>
           <Button color="danger" onClick={onRefresh}>
             <LoopOutline />
@@ -80,7 +80,7 @@ export default function PageLayout(props: IPageLayout) {
           </Button>
         </ErrorBlock>
       ) : null}
-      {(isSuccess && !loading) || minePath ? children : null}
+      {(isSuccess && !loading) || accountPath ? children : null}
       <CustomTabbar />
     </>
   );

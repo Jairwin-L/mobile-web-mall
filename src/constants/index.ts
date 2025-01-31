@@ -1,6 +1,6 @@
 export { APP_NAME } from './app';
 export { ApiUrl, SYSTEM_SUCCESS_MSG, SYSTEM_ERROR_MSG, DEFAULT_ERROR_MSG } from './api';
-export { TAB_BARS } from './router';
+export { TAB_BARS } from './route';
 export { SIMPLE_LINE } from './mine';
 export { NAV_BAR_TITLE } from './nav-bar';
 export { ORDER_OPTION } from './order';
