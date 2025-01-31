@@ -24,7 +24,7 @@
     "lint:fix": "prettier --write . && eslint --fix . && stylelint --fix \"**/*.{css,less,scss}\"",
     "ci:eslint": "eslint -f json src -o ./.ci/eslint.json",
     "prepare": "husky",
-    "start": "next start",
+    "start": "next start --port 6083",
     "tscheck": "tsc -b tsconfig.json"
   },
   "dependencies": {
