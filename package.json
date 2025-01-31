@@ -16,40 +16,16 @@
     "email": "jairwin@jairwin.cn"
   },
   "scripts": {
-    "build": "next build",
-    "ci:eslint": "eslint -f json src -o ./.ci/eslint.json",
     "dev": "next dev --port 9091",
+    "build": "next build",
     "f2elint-fix": "f2elint fix",
     "f2elint-scan": "f2elint scan",
     "lint": "eslint . && stylelint \"**/*.{css,less,scss}\"",
     "lint:fix": "prettier --write . && eslint --fix . && stylelint --fix \"**/*.{css,less,scss}\"",
+    "ci:eslint": "eslint -f json src -o ./.ci/eslint.json",
     "prepare": "husky",
-    "scp": "ssh -p 22 root@111.229.39.220 rm -rf /usr/local/nginx/html/jairwin/demo-test && scp -r -P 22 ./dist root@111.229.39.220:/usr/local/nginx/html/jairwin/demo-test",
     "start": "next start",
     "tscheck": "tsc -b tsconfig.json"
-  },
-  "commitlint": {
-    "extends": [
-      "ali"
-    ]
-  },
-  "lint-staged": {
-    "*.{cjs,cts,js,jsx,mjs,mts,ts,tsx,vue}": "eslint --fix",
-    "*.{css,less,scss}": "stylelint --fix",
-    "*.{cjs,css,cts,html,js,json,jsx,less,md,mjs,mts,scss,ts,tsx,vue,yaml,yml}": "prettier --write"
-  },
-  "prettier": "prettier-config-ali",
-  "eslintConfig": {
-    "extends": [
-      "ali/typescript/react",
-      "plugin:prettier/recommended"
-    ]
-  },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-ali",
-      "stylelint-prettier/recommended"
-    ]
   },
   "dependencies": {
     "@ant-design/icons": "^5.6.0",
@@ -91,6 +67,29 @@
     "stylelint": "^16.14.1",
     "stylelint-config-ali": "^2.1.1",
     "stylelint-prettier": "^5.0.3"
+  },
+  "commitlint": {
+    "extends": [
+      "ali"
+    ]
+  },
+  "lint-staged": {
+    "*.{cjs,cts,js,jsx,mjs,mts,ts,tsx,vue}": "eslint --fix",
+    "*.{css,less,scss}": "stylelint --fix",
+    "*.{cjs,css,cts,html,js,json,jsx,less,md,mjs,mts,scss,ts,tsx,vue,yaml,yml}": "prettier --write"
+  },
+  "prettier": "prettier-config-ali",
+  "eslintConfig": {
+    "extends": [
+      "ali/typescript/react",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-ali",
+      "stylelint-prettier/recommended"
+    ]
   },
   "engines": {
     "node": ">=18.18.0"

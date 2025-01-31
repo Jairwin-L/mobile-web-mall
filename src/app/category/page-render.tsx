@@ -1,10 +1,10 @@
 'use client';
-import { queryList } from '@/api/modules/category';
-import { PageLayout } from '@/components';
 import { SideBar } from 'antd-mobile';
 import throttle from 'lodash.throttle';
 import Image from 'next/image';
 import { Fragment, useEffect, useRef, useState } from 'react';
+import { queryList } from '@/api/modules/category';
+import { PageLayout } from '@/components';
 import style from './page.module.scss';
 
 export default function PageRender() {

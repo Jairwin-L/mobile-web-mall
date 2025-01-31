@@ -1,7 +1,7 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { show } from '@/api/modules/address';
 import { PageLayout } from '@/components';
-import { useEffect, useState } from 'react';
 import FormConfig from '../form-config';
 
 export default function PageRender() {

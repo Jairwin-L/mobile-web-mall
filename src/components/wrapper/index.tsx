@@ -1,5 +1,6 @@
 'use client';
 import { type ReactNode } from 'react';
+import 'antd-mobile/es/global';
 import ClientSideOnly from '../client-side-only';
 
 interface IWrapper {

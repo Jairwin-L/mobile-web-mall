@@ -1,3 +1,4 @@
+'use client';
 import { ErrorBlock } from 'antd-mobile';
 import AutoCenter from '../auto-center';
 

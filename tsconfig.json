@@ -29,7 +29,8 @@
     "next-env.d.ts",
     "next.config.mjs",
     "dist/types/**/*.ts",
-    "next.config.ts"
+    "next.config.ts",
+    ".eslintrc.cjs"
   ],
   "exclude": ["node_modules"]
 }

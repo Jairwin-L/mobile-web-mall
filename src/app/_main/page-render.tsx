@@ -1,11 +1,13 @@
 'use client';
-import { queryList, queryRecommend } from '@/api/modules/biz';
-import { Icon, LoadMore, PageLayout } from '@/components';
 import { Swiper } from 'antd-mobile';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { queryList, queryRecommend } from '@/api/modules/biz';
+import { Icon, LoadMore, PageLayout } from '@/components';
 import style from './page.module.scss';
 
 export default function PageRender() {
+  const { push } = useRouter();
   const [loading, setLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
@@ -20,8 +22,7 @@ export default function PageRender() {
     console.log(`onCategoryNav----->：`, item);
   };
   const onGotoDetail = (item: IQueryBiz.ListItem) => {
-    // push(`/detail/${item.id}`, { scroll: true });
-    console.log(`item----->：`, item);
+    push(`/detail/${item.id}`, { scroll: true });
   };
   const onLoadMore = () => {
     setPagination((preState: any) => {

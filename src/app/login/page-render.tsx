@@ -1,11 +1,11 @@
 'use client';
-import { login } from '@/api/modules/auth';
-import { PageLayout } from '@/components';
-import { phoneReg } from '@/utils';
 import { Button, Form, Input } from 'antd-mobile';
 import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { login } from '@/api/modules/auth';
+import { phoneReg } from '@/utils';
+import { PageLayout } from '@/components';
 import style from './page.module.scss';
 
 export default function PageRender() {

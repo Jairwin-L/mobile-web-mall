@@ -1,8 +1,9 @@
-import { SYSTEM_ERROR_MSG, TABS, TAB_BARS } from '@/constants';
+'use client';
 import { Button, ErrorBlock, NavBar, Popover, TabBar } from 'antd-mobile';
 import { LoopOutline } from 'antd-mobile-icons';
-import { Action } from 'antd-mobile/es/components/popover';
+import { type Action } from 'antd-mobile/es/components/popover';
 import { usePathname, useRouter } from 'next/navigation';
+import { SYSTEM_ERROR_MSG, TABS, TAB_BARS } from '@/constants';
 import ElePlaceholder from '../ele-placeholder';
 import Icon from '../icon';
 import Loading from '../loading';

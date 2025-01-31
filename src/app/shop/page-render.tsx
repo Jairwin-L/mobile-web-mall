@@ -1,10 +1,10 @@
 'use client';
-import { del, queryList } from '@/api/modules/shop';
-import { ElePlaceholder, Icon, PageData, PageLayout } from '@/components';
 import { Dialog, Stepper, SwipeAction, Toast } from 'antd-mobile';
 import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { del, queryList } from '@/api/modules/shop';
+import { ElePlaceholder, Icon, PageData, PageLayout } from '@/components';
 import style from './page.module.scss';
 
 export default function Shop() {

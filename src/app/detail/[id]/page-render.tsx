@@ -1,14 +1,15 @@
-import { create } from '@/api/modules/collection';
-import { CoverImage, ElePlaceholder, Icon, PageLayout } from '@/components';
+'use client';
 import { Popup, Selector, Stepper, Swiper, Toast } from 'antd-mobile';
 import { RightOutline } from 'antd-mobile-icons';
 import clsx from 'clsx';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { create } from '@/api/modules/collection';
+import { CoverImage, ElePlaceholder, Icon, PageLayout } from '@/components';
 // import { show } from '@/api/modules/shop';
 import style from './page.module.scss';
 
-export default function Detail(props: IBaseResp<IQueryShop.DetailResp>) {
+export default function PageRender(props: IBaseResp<IQueryShop.DetailResp>) {
   const { data } = props;
   const { push } = useRouter();
   const pathname = usePathname();

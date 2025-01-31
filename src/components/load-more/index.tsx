@@ -1,3 +1,4 @@
+'use client';
 import { DotLoading } from 'antd-mobile';
 import clsx from 'clsx';
 import style from './index.module.scss';

@@ -1,8 +1,8 @@
 'use client';
-import { del, queryList } from '@/api/modules/collection';
-import { LoadMore, PageData, PageLayout } from '@/components';
 import { Dialog, SwipeAction, SwipeActionRef } from 'antd-mobile';
 import { useEffect, useRef, useState } from 'react';
+import { del, queryList } from '@/api/modules/collection';
+import { LoadMore, PageData, PageLayout } from '@/components';
 import style from './page.module.scss';
 
 export default function PageRender() {
