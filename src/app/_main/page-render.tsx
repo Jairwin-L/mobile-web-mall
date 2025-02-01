@@ -35,7 +35,6 @@ export default function PageRender() {
     });
   };
   const fetchList = async () => {
-    setLoading(true);
     try {
       const resp = await queryList();
       const { data, success } = resp;
@@ -46,7 +45,6 @@ export default function PageRender() {
     } catch (error) {
       console.error(`123----->：`, error);
     }
-    setLoading(false);
   };
   const fetchRecommendList = async (firstLoad = false) => {
     if (firstLoad) {

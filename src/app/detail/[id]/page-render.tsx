@@ -3,18 +3,20 @@ import { Popup, Selector, Stepper, Swiper, Toast } from 'antd-mobile';
 import { RightOutline } from 'antd-mobile-icons';
 import clsx from 'clsx';
 import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { create } from '@/api/modules/collection';
+import { show } from '@/api/modules/biz';
 import { CoverImage, ElePlaceholder, Icon, PageLayout } from '@/components';
 // import { show } from '@/api/modules/shop';
 import style from './page.module.scss';
 
-export default function PageRender(props: IBaseResp<IQueryShop.DetailResp>) {
-  const { data } = props;
+export default function PageRender() {
   const { push } = useRouter();
   const pathname = usePathname();
+  const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
-  const { title, banners = [], collection = false, price, id, sku = {} } = data || {};
+  const [dataModel, setDataModel] = useState<IQueryGoods.Resp>();
+  // const { title, banners = [], collection = false, price, id, sku = {} } = data || {};
   const [skuValues, setSkuValues] = useState<any>({
     amount: 0,
     color: {},
@@ -32,7 +34,7 @@ export default function PageRender(props: IBaseResp<IQueryShop.DetailResp>) {
   };
   const onCollection = async () => {
     try {
-      const { success } = await create({ id });
+      const { success } = await create({ id: 123 });
       if (!success) return;
       push(pathname, {
         scroll: false,
@@ -74,7 +76,19 @@ export default function PageRender(props: IBaseResp<IQueryShop.DetailResp>) {
         content: '请选择规格',
       });
     }
-    push(`/build-order/${id}`, { scroll: true });
+    push(`/build-order/${123}`, { scroll: true });
+  };
+  const fetchModel = async () => {
+    setLoading(true);
+    try {
+      const resp = await show({ id: 123 });
+      const { data, success } = resp;
+      if (!success) return setLoading(false);
+      setDataModel(data);
+    } catch (error) {
+      console.error(`123----->：`, error);
+    }
+    setLoading(false);
   };
   const BarBtnWrapper = () => (
     <div className={style['bar-btn-wrapper']}>
@@ -86,9 +100,20 @@ export default function PageRender(props: IBaseResp<IQueryShop.DetailResp>) {
       </div>
     </div>
   );
+  useEffect(() => {
+    fetchModel();
+  }, []);
+  const {
+    banners = [],
+    title,
+    price,
+    collection,
+    sku = {},
+  } = (dataModel as IQueryGoods.Resp) || {};
 
   return (
     <PageLayout
+      loading={loading}
       extraInfo={{
         navbarTitle: '商品详情',
       }}

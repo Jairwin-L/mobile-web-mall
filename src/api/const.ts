@@ -1,6 +1,7 @@
 export enum MAIN {
   HOME = '/goods/data',
   RECOMMEND = '/goods/recommend',
+  GOODS = '/goods',
 }
 
 export enum ADDRESS {
