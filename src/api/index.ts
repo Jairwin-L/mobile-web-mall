@@ -19,18 +19,12 @@ fly.interceptors.response.use(
     const { data, request } = response;
     const { method } = request || {};
     if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
-      if (data.success) {
-        Toast.show({
-          content: data.msg || SYSTEM_SUCCESS_MSG,
-          icon: 'success',
-        });
-      }
-      if (!data?.success) {
-        Toast.show({
-          content: data.msg || SYSTEM_ERROR_MSG,
-          icon: 'fail',
-        });
-      }
+      const defaultContent = data.success ? SYSTEM_SUCCESS_MSG : SYSTEM_ERROR_MSG;
+      const content = data.msg || defaultContent;
+      Toast.show({
+        content,
+        icon: data.success ? 'success' : 'fail',
+      });
     }
     return data;
   },
@@ -58,33 +52,32 @@ class Request {
     this.BASE_URL = BASE_URL;
   }
   // Resp: response, Param: 入参
-  get<Resp, Param = never>(url: string, params?: Param): Promise<IBaseResp<Resp>> {
-    return this.fetch(url, 'get', params);
+  get<Resp, Param = never>(url: string, params?: Param) {
+    return this.fetch<Resp, Param>(url, 'get', params);
   }
-  delete<Resp, Param>(
-    url: string,
-    params: NonNullable<Param & { id: number }>,
-  ): Promise<IBaseResp<Resp>> {
-    return this.fetch(`${url}`, 'delete', params);
+  delete<Resp, Param>(url: string, params: NonNullable<Param & { id: number }>) {
+    return this.fetch<Resp, Param>(`${url}`, 'delete', params);
   }
-  put<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
-    return this.fetch(url, 'put', params);
+  put<Resp, Param>(url: string, params: Param) {
+    return this.fetch<Resp, Param>(url, 'put', params);
   }
-  post<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
-    return this.fetch(url, 'post', params);
+  post<Resp, Param>(url: string, params: Param) {
+    return this.fetch<Resp, Param>(url, 'post', params);
   }
   private async fetch<Resp, Param>(
     url: string,
     method: 'get' | 'post' | 'put' | 'delete',
     params?: Param,
   ): Promise<IBaseResp<Resp>> {
-    if (method === 'post' || method === 'put' || method === 'delete') {
+    if (method !== 'get') {
       Toast.show({
         content: '加载中……',
         icon: 'loading',
       });
     }
     const response = await fly[method](`${this.BASE_URL}${url}`, params);
+    // Type 'FlyResponse<any>' is missing the following properties from type 'IBaseResp<Resp>': msg, success
+    // @ts-ignore
     return response;
   }
 }

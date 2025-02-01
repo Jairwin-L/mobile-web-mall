@@ -1,7 +1,7 @@
 'use client';
 import { Dialog, SwipeAction, SwipeActionRef } from 'antd-mobile';
 import { useEffect, useRef, useState } from 'react';
-import { del, queryList } from '@/api/modules/collection';
+import { destroy, queryList } from '@/api/modules/collection';
 import { LoadMore, PageData, PageLayout } from '@/components';
 import style from './page.module.scss';
 
@@ -16,7 +16,7 @@ export default function PageRender() {
     Dialog.confirm({
       content: `确定要删除“${item.title}”嘛？`,
       onConfirm: async () => {
-        const { success } = await del({
+        const { success } = await destroy({
           id: Number(item.id),
         });
         if (!success) return;

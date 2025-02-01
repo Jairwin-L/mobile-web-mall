@@ -20,8 +20,8 @@ export default function FormConfig(props: IQueryAddress.Model) {
   const [cascadePickerTitle, setCascadePickerTitle] = useState<string>();
   const onFinish = async (values: any) => {
     setLoading(true);
+    let result = {};
     try {
-      let result: IBaseResp<string> = {};
       if (id) {
         result = await edit({
           ...values,
@@ -30,8 +30,10 @@ export default function FormConfig(props: IQueryAddress.Model) {
       } else {
         result = await create(values);
       }
+      // @ts-ignore
+      const { success } = result;
       setLoading(false);
-      if (!result?.success) return;
+      if (!success) return;
       back();
     } catch (error) {
       setLoading(false);

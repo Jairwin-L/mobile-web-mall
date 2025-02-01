@@ -16,7 +16,8 @@ export default function PageRender() {
   const onFinish = async (values: any) => {
     setLoading(true);
     try {
-      const { success = false } = await change(values);
+      const resp = await change(values);
+      const { success } = resp;
       setLoading(false);
       if (!success) return;
       back();

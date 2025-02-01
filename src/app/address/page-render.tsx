@@ -3,7 +3,7 @@ import { Button, Dialog, SwipeAction, Tag } from 'antd-mobile';
 import { SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { del, queryList } from '@/api/modules/address';
+import { destroy, queryList } from '@/api/modules/address';
 import { ElePlaceholder, Icon, LoadMore, PageData, PageLayout } from '@/components';
 import style from './page.module.scss';
 
@@ -21,7 +21,7 @@ export default function PageRender() {
     Dialog.confirm({
       content: '确认删除该地址？',
       onConfirm: async () => {
-        await del({
+        await destroy({
           id: item.id,
         });
       },
