@@ -1,7 +1,6 @@
 interface IBaseResp<D> {
-  data?: D;
-  meta?: CommonPage;
-  msg?: string;
+  data: D;
+  msg: string;
   success?: boolean;
   loading?: boolean;
 }

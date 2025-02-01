@@ -9,6 +9,8 @@ import style from './page.module.scss';
 export default function PageRender() {
   const { push } = useRouter();
   const [loading, setLoading] = useState(true);
+  const [listLoading, setListLoading] = useState(false);
+  const [loadMore, setLoadMore] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
   const [leftDataSource, setLeftDataSource] = useState<IQueryBiz.List>([]);
@@ -35,12 +37,8 @@ export default function PageRender() {
   const fetchList = async () => {
     setLoading(true);
     try {
-      const resp: IBaseResp<IQueryBiz.Resp> = await queryList({
-        pageIndex: pagination.pageIndex,
-        pageSize: 10,
-      });
+      const resp = await queryList();
       const { data, success } = resp;
-      console.log(`resp----->：`, resp);
       if (!success) return setLoading(false);
       const { banners = [], categoryNav = [] } = data || {};
       setBannerData(banners);
@@ -50,20 +48,24 @@ export default function PageRender() {
     }
     setLoading(false);
   };
-  const fetchRecommendList = async () => {
-    setLoading(true);
+  const fetchRecommendList = async (firstLoad = false) => {
+    if (firstLoad) {
+      setLoading(true);
+    } else {
+      setListLoading(true);
+    }
     try {
-      const resp: IBaseResp<IQueryBiz.Resp> = await queryRecommend({
+      const resp = await queryRecommend({
         pageIndex: pagination.pageIndex,
         pageSize: 10,
       });
-      const { data, meta, success, msg } = resp;
-      // @ts-ignore
+      const { data, success = false, msg } = resp;
       setIsSuccess(success);
-      // @ts-ignore
       setErrorMsg(msg);
-      if (!success) return setLoading(false);
-      const dataSource = data?.list || [];
+      setLoading(false);
+      setListLoading(false);
+      if (!success) return;
+      const dataSource = data.list || [];
       const leftData: any = [];
       const rightData: any = [];
       dataSource.forEach((item, index) => {
@@ -74,21 +76,28 @@ export default function PageRender() {
           rightData.push(item);
         }
       });
+      const page = data.meta;
       setLeftDataSource(leftDataSource.concat(leftData));
       setRightDataSource(rightDataSource.concat(rightData));
-      // @ts-ignore
-      setPagination(meta);
+      setPagination(page);
+      setLoadMore([...dataSource, ...data.list].length === page.totalCount);
     } catch (error) {
       console.error(`----->：`, error);
     }
     setLoading(false);
+    setListLoading(false);
   };
   useEffect(() => {
     fetchList();
   }, []);
   useEffect(() => {
-    fetchRecommendList();
+    if (pagination.pageIndex !== 1) {
+      fetchRecommendList();
+    }
   }, [pagination.pageIndex]);
+  useEffect(() => {
+    fetchRecommendList(pagination.pageIndex === 1);
+  }, []);
   const dataSource = [...leftDataSource, ...rightDataSource];
 
   return (
@@ -159,13 +168,7 @@ export default function PageRender() {
           </ul>
         </div>
       ) : null}
-      {dataSource.length > 0 ? (
-        <LoadMore
-          loadMore={dataSource.length === pagination.totalCount}
-          loading={loading}
-          onLoadMore={onLoadMore}
-        />
-      ) : null}
+      <LoadMore loadMore={loadMore} loading={listLoading} onLoadMore={onLoadMore} />
     </PageLayout>
   );
 }

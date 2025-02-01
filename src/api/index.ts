@@ -57,7 +57,7 @@ class Request {
   private constructor(BASE_URL: string) {
     this.BASE_URL = BASE_URL;
   }
-  // RResp: response, Param: 入参
+  // Resp: response, Param: 入参
   get<Resp, Param = never>(url: string, params?: Param): Promise<IBaseResp<Resp>> {
     return this.fetch(url, 'get', params);
   }

@@ -1,26 +1,16 @@
 import { MAIN } from '../const';
-import request from '../index';
+import { get } from '../method';
 /**
  * @title 列表
  * @description 查
  */
 // 查
-export async function queryList(params: IQueryBiz.Param): Promise<IBaseResp<IQueryBiz.Resp>> {
-  try {
-    const res = await request.get<IQueryBiz.Resp, IQueryBiz.Param>(MAIN.HOME, params);
-    return res;
-  } catch (error) {
-    console.log(`get:${MAIN.HOME}----->：`, error);
-    return {};
-  }
+export async function queryList() {
+  const res = await get<IQueryData.Resp>(MAIN.HOME);
+  return res;
 }
 // 查
-export async function queryRecommend(params: IQueryBiz.Param): Promise<IBaseResp<IQueryBiz.Resp>> {
-  try {
-    const res = await request.get<IQueryBiz.Resp, IQueryBiz.Param>(MAIN.RECOMMEND, params);
-    return res;
-  } catch (error) {
-    console.log(`get:${MAIN.RECOMMEND}----->：`, error);
-    return {};
-  }
+export async function queryRecommend(params: IQueryBiz.Param) {
+  const res = await get<IQueryRecommend.Resp, IQueryBiz.Param>(MAIN.RECOMMEND, params);
+  return res;
 }
