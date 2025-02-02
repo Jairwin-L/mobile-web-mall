@@ -2,7 +2,11 @@
 
 ## Live Url
 
-https://mobile-web-mall.vercel.app/
+[http://mobile-web-mall.jairwin.cn](http://mobile-web-mall.jairwin.cn)
+
+## git repo
+
+[https://github.com/Jairwin-L/mobile-web-mall](https://github.com/Jairwin-L/mobile-web-mall)
 
 ## Tech
 

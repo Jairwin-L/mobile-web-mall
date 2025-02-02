@@ -131,42 +131,44 @@ export default function PageRender() {
         </div>
       ) : null}
       {dataSource.length > 0 ? (
-        <div className={style['goods-list']}>
-          <ul>
-            {leftDataSource?.map((item) => {
-              return (
-                <li key={item.id} onClick={() => onGotoDetail(item)}>
-                  <div
-                    className={style['goods-pic-url']}
-                    style={{
-                      backgroundImage: `url(${item.goodsPicUrl})`,
-                    }}
-                  />
-                  <p>{item.title}</p>
-                  <p>{item.price}</p>
-                </li>
-              );
-            })}
-          </ul>
-          <ul>
-            {rightDataSource?.map((item) => {
-              return (
-                <li key={item.id} onClick={() => onGotoDetail(item)}>
-                  <div
-                    className={style['goods-pic-url']}
-                    style={{
-                      backgroundImage: `url(${item.goodsPicUrl})`,
-                    }}
-                  />
-                  <p>{item.title}</p>
-                  <p>{item.price}</p>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <>
+          <div className={style['goods-list']}>
+            <ul>
+              {leftDataSource?.map((item) => {
+                return (
+                  <li key={item.id} onClick={() => onGotoDetail(item)}>
+                    <div
+                      className={style['goods-pic-url']}
+                      style={{
+                        backgroundImage: `url(${item.goodsPicUrl})`,
+                      }}
+                    />
+                    <p>{item.title}</p>
+                    <p>{item.price}</p>
+                  </li>
+                );
+              })}
+            </ul>
+            <ul>
+              {rightDataSource?.map((item) => {
+                return (
+                  <li key={item.id} onClick={() => onGotoDetail(item)}>
+                    <div
+                      className={style['goods-pic-url']}
+                      style={{
+                        backgroundImage: `url(${item.goodsPicUrl})`,
+                      }}
+                    />
+                    <p>{item.title}</p>
+                    <p>{item.price}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <LoadMore loadMore={loadMore} loading={listLoading} onLoadMore={onLoadMore} />
+        </>
       ) : null}
-      <LoadMore loadMore={loadMore} loading={listLoading} onLoadMore={onLoadMore} />
     </PageLayout>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 import { SideBar } from 'antd-mobile';
-import throttle from 'lodash.throttle';
+import { throttle } from 'lodash-es';
 import Image from 'next/image';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { queryList } from '@/api/modules/category';

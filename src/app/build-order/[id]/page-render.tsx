@@ -2,7 +2,7 @@
 import { Button, Input, Popup } from 'antd-mobile';
 import { CheckOutline, CloseOutline, RightOutline } from 'antd-mobile-icons';
 import clsx from 'clsx';
-import debounce from 'lodash.debounce';
+import { debounce } from 'lodash-es';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 // import { show } from '@/api/modules/shop';
